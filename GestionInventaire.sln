@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionInventaire", "GestionInventaire\GestionInventaire.csproj", "{8E51EE68-C30C-41B0-BFA7-25D7C723BF34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionInventaireClass", "GestionInventaireClass\GestionInventaireClass.csproj", "{CAFB64CB-72D5-440F-92F5-9833EF64128B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionInventaireTest", "GestionInventaireTest\GestionInventaireTest.csproj", "{917A17A9-AFBC-44DD-B39C-431CA2398BF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionInventaireFront", "GestionInventaireFront\GestionInventaireFront.csproj", "{5CE1EEBD-A29B-4092-AA41-F6DF2D4703A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E51EE68-C30C-41B0-BFA7-25D7C723BF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E51EE68-C30C-41B0-BFA7-25D7C723BF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E51EE68-C30C-41B0-BFA7-25D7C723BF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E51EE68-C30C-41B0-BFA7-25D7C723BF34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAFB64CB-72D5-440F-92F5-9833EF64128B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAFB64CB-72D5-440F-92F5-9833EF64128B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAFB64CB-72D5-440F-92F5-9833EF64128B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAFB64CB-72D5-440F-92F5-9833EF64128B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917A17A9-AFBC-44DD-B39C-431CA2398BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917A17A9-AFBC-44DD-B39C-431CA2398BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917A17A9-AFBC-44DD-B39C-431CA2398BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917A17A9-AFBC-44DD-B39C-431CA2398BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE1EEBD-A29B-4092-AA41-F6DF2D4703A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE1EEBD-A29B-4092-AA41-F6DF2D4703A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE1EEBD-A29B-4092-AA41-F6DF2D4703A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE1EEBD-A29B-4092-AA41-F6DF2D4703A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
