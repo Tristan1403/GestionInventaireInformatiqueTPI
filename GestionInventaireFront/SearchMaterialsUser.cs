@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace GestionInventaireFront
 {
-    public partial class SearchMaterialsUser : Form
+    public partial class frmSearchMaterialsUser : Form
     {
-        public SearchMaterialsUser()
+        public frmSearchMaterialsUser()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

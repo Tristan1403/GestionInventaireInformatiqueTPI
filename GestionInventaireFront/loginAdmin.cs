@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionInventaireClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,33 @@ namespace GestionInventaireFront
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmdLogin_Click(object sender, EventArgs e)
+        {
+            if (txtPseudo.Text != "" || txtPassword.Text != "")
+            {
+                ConnectionDB bdd = new ConnectionDB();
+                Admin admin = new Admin(txtPseudo.Text, txtPassword.Text);
+                bool CheckAmind = bdd.CheckAdmin(admin);
+
+                if(CheckAmind == true)
+                {
+                    FrmHomeAdmin homeAdmin = new FrmHomeAdmin();
+                    this.Hide();
+                    homeAdmin.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Le pseudo ou le mot de passe est incorrecte!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir les champs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
     }
 }

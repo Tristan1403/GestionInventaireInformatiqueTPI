@@ -16,5 +16,10 @@ namespace GestionInventaireFront
         {
             InitializeComponent();
         }
+
+        private void ListModifyAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

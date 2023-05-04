@@ -53,6 +53,7 @@
             this.cmdLogin.TabIndex = 1;
             this.cmdLogin.Text = "se connecter";
             this.cmdLogin.UseVisualStyleBackColor = true;
+            this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
             // 
             // lblPseudo
             // 
@@ -77,14 +78,15 @@
             // 
             this.txtPseudo.Location = new System.Drawing.Point(339, 86);
             this.txtPseudo.Name = "txtPseudo";
-            this.txtPseudo.Size = new System.Drawing.Size(100, 23);
+            this.txtPseudo.Size = new System.Drawing.Size(151, 23);
             this.txtPseudo.TabIndex = 4;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(339, 176);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 23);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(151, 23);
             this.txtPassword.TabIndex = 5;
             // 
             // FrmloginAdmin

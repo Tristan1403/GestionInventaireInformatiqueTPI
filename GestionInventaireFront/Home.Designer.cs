@@ -40,6 +40,7 @@
             this.CmdUser.TabIndex = 0;
             this.CmdUser.Text = "partie utilisateur";
             this.CmdUser.UseVisualStyleBackColor = true;
+            this.CmdUser.Click += new System.EventHandler(this.CmdUser_Click);
             // 
             // CmdAdmin
             // 
@@ -49,6 +50,7 @@
             this.CmdAdmin.TabIndex = 1;
             this.CmdAdmin.Text = "partie administrateur";
             this.CmdAdmin.UseVisualStyleBackColor = true;
+            this.CmdAdmin.Click += new System.EventHandler(this.CmdAdmin_Click);
             // 
             // FrmHome
             // 
