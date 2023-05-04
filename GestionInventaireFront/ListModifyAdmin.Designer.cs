@@ -1,6 +1,6 @@
 ﻿namespace GestionInventaireFront
 {
-    partial class ListModifyAdmin
+    partial class FrmListModifyAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -75,8 +75,9 @@
             this.cmdHomeListAddDelete.Name = "cmdHomeListAddDelete";
             this.cmdHomeListAddDelete.Size = new System.Drawing.Size(125, 48);
             this.cmdHomeListAddDelete.TabIndex = 3;
-            this.cmdHomeListAddDelete.Text = "accueil";
+            this.cmdHomeListAddDelete.Text = "accueil admin";
             this.cmdHomeListAddDelete.UseVisualStyleBackColor = true;
+            this.cmdHomeListAddDelete.Click += new System.EventHandler(this.cmdHomeListAddDelete_Click);
             // 
             // txtModules
             // 
@@ -92,6 +93,7 @@
             this.cbxModules.Name = "cbxModules";
             this.cbxModules.Size = new System.Drawing.Size(121, 23);
             this.cbxModules.TabIndex = 5;
+            this.cbxModules.SelectedIndexChanged += new System.EventHandler(this.cbxModules_SelectedIndexChanged);
             // 
             // lblModules
             // 
@@ -168,7 +170,7 @@
             this.cmdAdd.Text = "ajouter";
             this.cmdAdd.UseVisualStyleBackColor = true;
             // 
-            // ListModifyAdmin
+            // FrmListModifyAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,7 +190,7 @@
             this.Controls.Add(this.txtBrands);
             this.Controls.Add(this.cbxBrands);
             this.Controls.Add(this.lblBrands);
-            this.Name = "ListModifyAdmin";
+            this.Name = "FrmListModifyAdmin";
             this.Text = "ListeModifyAdmin";
             this.Load += new System.EventHandler(this.ListModifyAdmin_Load);
             this.ResumeLayout(false);

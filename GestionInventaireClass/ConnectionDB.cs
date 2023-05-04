@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Org.BouncyCastle.Tls.Crypto.Impl.BC;
+using System.Linq.Expressions;
 
 
 namespace GestionInventaireClass
@@ -54,6 +55,7 @@ namespace GestionInventaireClass
                 // Exécution de la commande SQL
                 rdr = cmd.ExecuteReader();
 
+                //return true if pseudo and password are right
                 while (rdr.Read())
                 {
                     if (admin.Pseudo == rdr["pseudo"].ToString())
@@ -66,6 +68,7 @@ namespace GestionInventaireClass
                 }
 
             }
+            //catch connection error from mySQL then write them in GestionInventaire\GestionInventaireFront\bin\Debug\net6.0-windows\log.txt
             catch (Exception exc)
             {
                 // Error management
@@ -82,6 +85,72 @@ namespace GestionInventaireClass
                 }
             }
             return test;
+        }
+
+
+
+        /// <summary>
+        /// This method is aimed to return the list found in db
+        /// </summary>
+
+        public List<string> GetList(string listName)
+        {
+            connection.Open();
+
+            MySqlDataReader rdr = null;
+            List<string> list = new List<string>();
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+                switch (listName)
+                {
+                    case "brands":
+                        cmd.CommandText = "SELECT name FROM brands;";
+                        break;
+                    case "types":
+                        cmd.CommandText = "SELECT name FROM types;";
+                        break;
+                    case "storageplaces":
+                        cmd.CommandText = "SELECT name FROM storageplaces;";
+                        break;
+                    case "modules":
+                        cmd.CommandText = "SELECT name FROM modules;";
+                        break;
+                    default:
+                        break;
+                }
+              
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    list.Add(new string(rdr["name"].ToString()));
+                }
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+            return list;
         }
     }
 }

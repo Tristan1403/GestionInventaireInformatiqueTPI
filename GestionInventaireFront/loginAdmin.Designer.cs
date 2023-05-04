@@ -44,6 +44,7 @@
             this.cmdHomeLogin.TabIndex = 0;
             this.cmdHomeLogin.Text = "accueil";
             this.cmdHomeLogin.UseVisualStyleBackColor = true;
+            this.cmdHomeLogin.Click += new System.EventHandler(this.cmdHomeLogin_Click);
             // 
             // cmdLogin
             // 

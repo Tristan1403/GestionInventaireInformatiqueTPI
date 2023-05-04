@@ -42,6 +42,7 @@
             this.CmdInsert.TabIndex = 0;
             this.CmdInsert.Text = "insérer du matériel";
             this.CmdInsert.UseVisualStyleBackColor = true;
+            this.CmdInsert.Click += new System.EventHandler(this.CmdInsert_Click);
             // 
             // CmdModify
             // 
@@ -51,6 +52,7 @@
             this.CmdModify.TabIndex = 1;
             this.CmdModify.Text = "modifier le matériel";
             this.CmdModify.UseVisualStyleBackColor = true;
+            this.CmdModify.Click += new System.EventHandler(this.CmdModify_Click);
             // 
             // CmdList
             // 
@@ -60,6 +62,7 @@
             this.CmdList.TabIndex = 2;
             this.CmdList.Text = "modifier les listes marques, modules et lieux d\'emplacement";
             this.CmdList.UseVisualStyleBackColor = true;
+            this.CmdList.Click += new System.EventHandler(this.CmdList_Click);
             // 
             // cmdHomeAdmin
             // 
@@ -69,6 +72,7 @@
             this.cmdHomeAdmin.TabIndex = 3;
             this.cmdHomeAdmin.Text = "se déconnecter";
             this.cmdHomeAdmin.UseVisualStyleBackColor = true;
+            this.cmdHomeAdmin.Click += new System.EventHandler(this.cmdHomeAdmin_Click);
             // 
             // FrmHomeAdmin
             // 

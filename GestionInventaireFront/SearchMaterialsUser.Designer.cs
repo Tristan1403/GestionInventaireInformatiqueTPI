@@ -30,7 +30,7 @@
         {
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.cbxModule = new System.Windows.Forms.ComboBox();
-            this.cbxStockagePlace = new System.Windows.Forms.ComboBox();
+            this.cbxStoragePlace = new System.Windows.Forms.ComboBox();
             this.cbxBrand = new System.Windows.Forms.ComboBox();
             this.txtPurchaseDate = new System.Windows.Forms.TextBox();
             this.txtRenewDate = new System.Windows.Forms.TextBox();
@@ -54,7 +54,7 @@
             // cbxType
             // 
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(152, 316);
+            this.cbxType.Location = new System.Drawing.Point(187, 316);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 23);
             this.cbxType.TabIndex = 46;
@@ -62,58 +62,58 @@
             // cbxModule
             // 
             this.cbxModule.FormattingEnabled = true;
-            this.cbxModule.Location = new System.Drawing.Point(152, 213);
+            this.cbxModule.Location = new System.Drawing.Point(187, 213);
             this.cbxModule.Name = "cbxModule";
             this.cbxModule.Size = new System.Drawing.Size(121, 23);
             this.cbxModule.TabIndex = 45;
             // 
-            // cbxStockagePlace
+            // cbxStoragePlace
             // 
-            this.cbxStockagePlace.FormattingEnabled = true;
-            this.cbxStockagePlace.Location = new System.Drawing.Point(152, 240);
-            this.cbxStockagePlace.Name = "cbxStockagePlace";
-            this.cbxStockagePlace.Size = new System.Drawing.Size(121, 23);
-            this.cbxStockagePlace.TabIndex = 44;
+            this.cbxStoragePlace.FormattingEnabled = true;
+            this.cbxStoragePlace.Location = new System.Drawing.Point(187, 240);
+            this.cbxStoragePlace.Name = "cbxStoragePlace";
+            this.cbxStoragePlace.Size = new System.Drawing.Size(121, 23);
+            this.cbxStoragePlace.TabIndex = 44;
             // 
             // cbxBrand
             // 
             this.cbxBrand.FormattingEnabled = true;
-            this.cbxBrand.Location = new System.Drawing.Point(152, 186);
+            this.cbxBrand.Location = new System.Drawing.Point(187, 186);
             this.cbxBrand.Name = "cbxBrand";
             this.cbxBrand.Size = new System.Drawing.Size(121, 23);
             this.cbxBrand.TabIndex = 43;
             // 
             // txtPurchaseDate
             // 
-            this.txtPurchaseDate.Location = new System.Drawing.Point(152, 158);
+            this.txtPurchaseDate.Location = new System.Drawing.Point(187, 158);
             this.txtPurchaseDate.Name = "txtPurchaseDate";
             this.txtPurchaseDate.Size = new System.Drawing.Size(121, 23);
             this.txtPurchaseDate.TabIndex = 42;
             // 
             // txtRenewDate
             // 
-            this.txtRenewDate.Location = new System.Drawing.Point(152, 265);
+            this.txtRenewDate.Location = new System.Drawing.Point(187, 265);
             this.txtRenewDate.Name = "txtRenewDate";
             this.txtRenewDate.Size = new System.Drawing.Size(121, 23);
             this.txtRenewDate.TabIndex = 41;
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(152, 290);
+            this.txtQuantity.Location = new System.Drawing.Point(187, 290);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(121, 23);
             this.txtQuantity.TabIndex = 40;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(152, 129);
+            this.txtDescription.Location = new System.Drawing.Point(187, 129);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(121, 23);
             this.txtDescription.TabIndex = 39;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(152, 98);
+            this.txtName.Location = new System.Drawing.Point(187, 98);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(121, 23);
             this.txtName.TabIndex = 38;
@@ -217,6 +217,7 @@
             this.cmdHomeSearch.TabIndex = 48;
             this.cmdHomeSearch.Text = "accueil";
             this.cmdHomeSearch.UseVisualStyleBackColor = true;
+            this.cmdHomeSearch.Click += new System.EventHandler(this.cmdHomeSearch_Click);
             // 
             // lblSearch
             // 
@@ -237,7 +238,7 @@
             this.Controls.Add(this.cmdSearch);
             this.Controls.Add(this.cbxType);
             this.Controls.Add(this.cbxModule);
-            this.Controls.Add(this.cbxStockagePlace);
+            this.Controls.Add(this.cbxStoragePlace);
             this.Controls.Add(this.cbxBrand);
             this.Controls.Add(this.txtPurchaseDate);
             this.Controls.Add(this.txtRenewDate);
@@ -255,6 +256,7 @@
             this.Controls.Add(this.lblName);
             this.Name = "frmSearchMaterialsUser";
             this.Text = "SearchMaterialsUser";
+            this.Load += new System.EventHandler(this.frmSearchMaterialsUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,7 +266,7 @@
 
         private ComboBox cbxType;
         private ComboBox cbxModule;
-        private ComboBox cbxStockagePlace;
+        private ComboBox cbxStoragePlace;
         private ComboBox cbxBrand;
         private TextBox txtPurchaseDate;
         private TextBox txtRenewDate;

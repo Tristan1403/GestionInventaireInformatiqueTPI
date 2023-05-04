@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace GestionInventaireFront
 {
-    public partial class ListMaterialsAdmin : Form
+    public partial class FrmListMaterialsAdmin : Form
     {
-        public ListMaterialsAdmin()
+        public FrmListMaterialsAdmin()
         {
             InitializeComponent();
+        }
+
+        private void cmdHomeListAddDelete_Click(object sender, EventArgs e)
+        {
+            FrmHomeAdmin homeAdmin = new FrmHomeAdmin();
+            this.Hide();
+            homeAdmin.ShowDialog();
+            this.Close();
         }
     }
 }

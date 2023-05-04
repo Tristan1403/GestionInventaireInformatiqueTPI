@@ -100,7 +100,7 @@
             // lblStoragePlace
             // 
             this.lblStoragePlace.AutoSize = true;
-            this.lblStoragePlace.Location = new System.Drawing.Point(76, 199);
+            this.lblStoragePlace.Location = new System.Drawing.Point(76, 200);
             this.lblStoragePlace.Name = "lblStoragePlace";
             this.lblStoragePlace.Size = new System.Drawing.Size(92, 15);
             this.lblStoragePlace.TabIndex = 5;
@@ -118,7 +118,7 @@
             // lblRenewDate
             // 
             this.lblRenewDate.AutoSize = true;
-            this.lblRenewDate.Location = new System.Drawing.Point(76, 224);
+            this.lblRenewDate.Location = new System.Drawing.Point(76, 225);
             this.lblRenewDate.Name = "lblRenewDate";
             this.lblRenewDate.Size = new System.Drawing.Size(132, 15);
             this.lblRenewDate.TabIndex = 7;
@@ -144,35 +144,35 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(178, 49);
+            this.txtName.Location = new System.Drawing.Point(234, 50);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(121, 23);
             this.txtName.TabIndex = 10;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(178, 80);
+            this.txtDescription.Location = new System.Drawing.Point(234, 81);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(121, 23);
             this.txtDescription.TabIndex = 11;
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(178, 241);
+            this.txtQuantity.Location = new System.Drawing.Point(234, 242);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(121, 23);
             this.txtQuantity.TabIndex = 14;
             // 
             // txtRenewDate
             // 
-            this.txtRenewDate.Location = new System.Drawing.Point(178, 216);
+            this.txtRenewDate.Location = new System.Drawing.Point(234, 217);
             this.txtRenewDate.Name = "txtRenewDate";
             this.txtRenewDate.Size = new System.Drawing.Size(121, 23);
             this.txtRenewDate.TabIndex = 15;
             // 
             // txtPurchaseDate
             // 
-            this.txtPurchaseDate.Location = new System.Drawing.Point(178, 109);
+            this.txtPurchaseDate.Location = new System.Drawing.Point(234, 110);
             this.txtPurchaseDate.Name = "txtPurchaseDate";
             this.txtPurchaseDate.Size = new System.Drawing.Size(121, 23);
             this.txtPurchaseDate.TabIndex = 19;
@@ -180,7 +180,7 @@
             // cbxArchived
             // 
             this.cbxArchived.AutoSize = true;
-            this.cbxArchived.Location = new System.Drawing.Point(235, 305);
+            this.cbxArchived.Location = new System.Drawing.Point(291, 306);
             this.cbxArchived.Name = "cbxArchived";
             this.cbxArchived.Size = new System.Drawing.Size(15, 14);
             this.cbxArchived.TabIndex = 21;
@@ -201,13 +201,14 @@
             this.cmdHomeAddModify.Name = "cmdHomeAddModify";
             this.cmdHomeAddModify.Size = new System.Drawing.Size(125, 48);
             this.cmdHomeAddModify.TabIndex = 24;
-            this.cmdHomeAddModify.Text = "se déconnecter";
+            this.cmdHomeAddModify.Text = "accueil admin";
             this.cmdHomeAddModify.UseVisualStyleBackColor = true;
+            this.cmdHomeAddModify.Click += new System.EventHandler(this.cmdHomeAddModify_Click);
             // 
             // cbxBrand
             // 
             this.cbxBrand.FormattingEnabled = true;
-            this.cbxBrand.Location = new System.Drawing.Point(178, 137);
+            this.cbxBrand.Location = new System.Drawing.Point(234, 138);
             this.cbxBrand.Name = "cbxBrand";
             this.cbxBrand.Size = new System.Drawing.Size(121, 23);
             this.cbxBrand.TabIndex = 25;
@@ -215,7 +216,7 @@
             // cbxStockagePlace
             // 
             this.cbxStockagePlace.FormattingEnabled = true;
-            this.cbxStockagePlace.Location = new System.Drawing.Point(178, 191);
+            this.cbxStockagePlace.Location = new System.Drawing.Point(234, 192);
             this.cbxStockagePlace.Name = "cbxStockagePlace";
             this.cbxStockagePlace.Size = new System.Drawing.Size(121, 23);
             this.cbxStockagePlace.TabIndex = 26;
@@ -223,7 +224,7 @@
             // cbxModule
             // 
             this.cbxModule.FormattingEnabled = true;
-            this.cbxModule.Location = new System.Drawing.Point(178, 164);
+            this.cbxModule.Location = new System.Drawing.Point(234, 165);
             this.cbxModule.Name = "cbxModule";
             this.cbxModule.Size = new System.Drawing.Size(121, 23);
             this.cbxModule.TabIndex = 27;
@@ -231,7 +232,7 @@
             // cbxType
             // 
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(178, 267);
+            this.cbxType.Location = new System.Drawing.Point(234, 268);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 23);
             this.cbxType.TabIndex = 28;

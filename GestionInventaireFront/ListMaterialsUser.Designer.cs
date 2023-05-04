@@ -1,6 +1,6 @@
 ﻿namespace GestionInventaireFront
 {
-    partial class ListMaterialsUser
+    partial class FrmListMaterialsUser
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.cmdHomeListAddDelete = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // cmdHomeListAddDelete
+            // 
+            this.cmdHomeListAddDelete.Location = new System.Drawing.Point(663, 390);
+            this.cmdHomeListAddDelete.Name = "cmdHomeListAddDelete";
+            this.cmdHomeListAddDelete.Size = new System.Drawing.Size(125, 48);
+            this.cmdHomeListAddDelete.TabIndex = 4;
+            this.cmdHomeListAddDelete.Text = "accueil";
+            this.cmdHomeListAddDelete.UseVisualStyleBackColor = true;
+            this.cmdHomeListAddDelete.Click += new System.EventHandler(this.cmdHomeListAddDelete_Click);
+            // 
+            // FrmListMaterialsUser
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmdHomeListAddDelete);
+            this.Name = "FrmListMaterialsUser";
             this.Text = "ListeMaterialsUser";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Button cmdHomeListAddDelete;
     }
 }

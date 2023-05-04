@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionInventaireClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,32 @@ namespace GestionInventaireFront
 
         private void button1_Click(object sender, EventArgs e)
         {
+            FrmListMaterialsUser listMaterialsUser = new FrmListMaterialsUser();
+            this.Hide();
+            listMaterialsUser.ShowDialog();
+            this.Close();
+        }
 
+        private void cmdHomeSearch_Click(object sender, EventArgs e)
+        {
+            FrmHome home = new FrmHome();
+            this.Hide();
+            home.ShowDialog();
+            this.Close();
+        }
+
+        private void frmSearchMaterialsUser_Load(object sender, EventArgs e)
+        {
+            ConnectionDB bdd = new ConnectionDB();
+            List<string> brands = new List<string>();
+            string listName = "brands";
+            cbxBrand.Items.AddRange(bdd.GetList(listName).ToArray());
+            listName = "types";
+            cbxType.Items.AddRange(bdd.GetList(listName).ToArray());
+            listName = "modules";
+            cbxModule.Items.AddRange(bdd.GetList(listName).ToArray());
+            listName = "storageplaces";
+            cbxStoragePlace.Items.AddRange(bdd.GetList(listName).ToArray());
         }
     }
 }

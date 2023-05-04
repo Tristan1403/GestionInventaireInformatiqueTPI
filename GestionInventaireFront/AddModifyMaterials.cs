@@ -16,5 +16,13 @@ namespace GestionInventaireFront
         {
             InitializeComponent();
         }
+
+        private void cmdHomeAddModify_Click(object sender, EventArgs e)
+        {
+            FrmHomeAdmin homeAdmin = new FrmHomeAdmin();
+            this.Hide();
+            homeAdmin.ShowDialog();
+            this.Close();
+        }
     }
 }
