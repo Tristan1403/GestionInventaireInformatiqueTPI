@@ -40,7 +40,6 @@
             this.lblArchived = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.txtType = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtRenewDate = new System.Windows.Forms.TextBox();
             this.txtPurchaseDate = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.cbxBrand = new System.Windows.Forms.ComboBox();
             this.cbxStockagePlace = new System.Windows.Forms.ComboBox();
             this.cbxModule = new System.Windows.Forms.ComboBox();
+            this.cbxType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblName
@@ -156,13 +156,6 @@
             this.txtDescription.Size = new System.Drawing.Size(121, 23);
             this.txtDescription.TabIndex = 11;
             // 
-            // txtType
-            // 
-            this.txtType.Location = new System.Drawing.Point(178, 267);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(121, 23);
-            this.txtType.TabIndex = 13;
-            // 
             // txtQuantity
             // 
             this.txtQuantity.Location = new System.Drawing.Point(178, 241);
@@ -195,9 +188,9 @@
             // 
             // cmdAddModify
             // 
-            this.cmdAddModify.Location = new System.Drawing.Point(396, 347);
+            this.cmdAddModify.Location = new System.Drawing.Point(330, 337);
             this.cmdAddModify.Name = "cmdAddModify";
-            this.cmdAddModify.Size = new System.Drawing.Size(75, 23);
+            this.cmdAddModify.Size = new System.Drawing.Size(160, 60);
             this.cmdAddModify.TabIndex = 23;
             this.cmdAddModify.Text = "ajouter/modifier";
             this.cmdAddModify.UseVisualStyleBackColor = true;
@@ -235,11 +228,20 @@
             this.cbxModule.Size = new System.Drawing.Size(121, 23);
             this.cbxModule.TabIndex = 27;
             // 
+            // cbxType
+            // 
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Location = new System.Drawing.Point(178, 267);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(121, 23);
+            this.cbxType.TabIndex = 28;
+            // 
             // frmAddModifyMaterials
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbxType);
             this.Controls.Add(this.cbxModule);
             this.Controls.Add(this.cbxStockagePlace);
             this.Controls.Add(this.cbxBrand);
@@ -249,7 +251,6 @@
             this.Controls.Add(this.txtPurchaseDate);
             this.Controls.Add(this.txtRenewDate);
             this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.txtType);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblArchived);
@@ -283,7 +284,6 @@
         private Label lblArchived;
         private TextBox txtName;
         private TextBox txtDescription;
-        private TextBox txtType;
         private TextBox txtQuantity;
         private TextBox txtRenewDate;
         private TextBox txtPurchaseDate;
@@ -293,5 +293,6 @@
         private ComboBox cbxBrand;
         private ComboBox cbxStockagePlace;
         private ComboBox cbxModule;
+        private ComboBox cbxType;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace GestionInventaireFront
 {
-    partial class ListeMaterialsUser
+    partial class ListMaterialsUser
     {
         /// <summary>
         /// Required designer variable.

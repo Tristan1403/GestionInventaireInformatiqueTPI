@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GestionInventaireFront
 {
-    public partial class ListeMaterialsUser : Form
+    public partial class ListModifyAdmin : Form
     {
-        public ListeMaterialsUser()
+        public ListModifyAdmin()
         {
             InitializeComponent();
         }

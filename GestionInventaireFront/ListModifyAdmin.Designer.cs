@@ -1,6 +1,6 @@
 ﻿namespace GestionInventaireFront
 {
-    partial class ListeModifyAdmin
+    partial class ListModifyAdmin
     {
         /// <summary>
         /// Required designer variable.
