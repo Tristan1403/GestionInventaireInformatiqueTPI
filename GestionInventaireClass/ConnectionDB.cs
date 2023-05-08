@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Data;
 using Org.BouncyCastle.Tls.Crypto.Impl.BC;
 using System.Linq.Expressions;
+using Org.BouncyCastle.Utilities.Collections;
+using static System.Formats.Asn1.AsnWriter;
 
 
 namespace GestionInventaireClass
@@ -75,6 +77,7 @@ namespace GestionInventaireClass
                 // We choose to create a log file with the exceptions we get
                 Logger logger = new Logger();
                 logger.writeInLogFile(Logger.Level.ERROR, Environment.CurrentDirectory, "log.txt", exc.Message);
+                throw new Exception("Problème pour la connexion à la base de données!");
             }
             finally
             {
@@ -107,24 +110,8 @@ namespace GestionInventaireClass
                 MySqlCommand cmd = this.connection.CreateCommand();
 
                 // Requête SQL
-                switch (listName)
-                {
-                    case "brands":
-                        cmd.CommandText = "SELECT name FROM brands;";
-                        break;
-                    case "types":
-                        cmd.CommandText = "SELECT name FROM types;";
-                        break;
-                    case "storageplaces":
-                        cmd.CommandText = "SELECT name FROM storageplaces;";
-                        break;
-                    case "modules":
-                        cmd.CommandText = "SELECT name FROM modules;";
-                        break;
-                    default:
-                        break;
-                }
-              
+                cmd.CommandText = "SELECT name FROM " + listName + ";";
+
 
                 // Exécution de la commande SQL
                 rdr = cmd.ExecuteReader();
@@ -151,6 +138,91 @@ namespace GestionInventaireClass
                 }
             }
             return list;
+        }
+
+
+        /// <summary>
+        /// This method is aimed to insert words to the lists
+        /// </summary>
+        public void InsertWord(string WordToAdd, string listName)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+
+                cmd.CommandText = "INSERT INTO " + listName + " (name) VALUES(@WordToAdd);";
+                cmd.Parameters.AddWithValue("@WordToAdd", WordToAdd);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+                throw new Exception("Ce mot existe déjà dans la base de données!");
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// This method is aimed to delete word in the lists
+        /// </summary>
+        public void DeleteWord(string WordToDelete, string listName)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+
+                cmd.CommandText = "DELETE FROM " + listName + " WHERE name=@WordToDelete;";
+                cmd.Parameters.AddWithValue("@WordToDelete", WordToDelete);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
         }
     }
 }

@@ -38,7 +38,7 @@
             this.txtPlaces = new System.Windows.Forms.TextBox();
             this.cbxPlaces = new System.Windows.Forms.ComboBox();
             this.lblPlaces = new System.Windows.Forms.Label();
-            this.tbxTypes = new System.Windows.Forms.TextBox();
+            this.txtTypes = new System.Windows.Forms.TextBox();
             this.cbxTypes = new System.Windows.Forms.ComboBox();
             this.lblTypes = new System.Windows.Forms.Label();
             this.cmdDelete = new System.Windows.Forms.Button();
@@ -128,12 +128,12 @@
             this.lblPlaces.TabIndex = 7;
             this.lblPlaces.Text = "lieux de stockage";
             // 
-            // tbxTypes
+            // txtTypes
             // 
-            this.tbxTypes.Location = new System.Drawing.Point(508, 215);
-            this.tbxTypes.Name = "tbxTypes";
-            this.tbxTypes.Size = new System.Drawing.Size(121, 23);
-            this.tbxTypes.TabIndex = 12;
+            this.txtTypes.Location = new System.Drawing.Point(508, 215);
+            this.txtTypes.Name = "txtTypes";
+            this.txtTypes.Size = new System.Drawing.Size(121, 23);
+            this.txtTypes.TabIndex = 12;
             // 
             // cbxTypes
             // 
@@ -160,6 +160,7 @@
             this.cmdDelete.TabIndex = 13;
             this.cmdDelete.Text = "effacer";
             this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // cmdAdd
             // 
@@ -169,6 +170,7 @@
             this.cmdAdd.TabIndex = 14;
             this.cmdAdd.Text = "ajouter";
             this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // FrmListModifyAdmin
             // 
@@ -177,7 +179,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.cmdDelete);
-            this.Controls.Add(this.tbxTypes);
+            this.Controls.Add(this.txtTypes);
             this.Controls.Add(this.cbxTypes);
             this.Controls.Add(this.lblTypes);
             this.Controls.Add(this.txtPlaces);
@@ -210,7 +212,7 @@
         private TextBox txtPlaces;
         private ComboBox cbxPlaces;
         private Label lblPlaces;
-        private TextBox tbxTypes;
+        private TextBox txtTypes;
         private ComboBox cbxTypes;
         private Label lblTypes;
         private Button cmdDelete;

@@ -45,5 +45,79 @@ namespace GestionInventaireFront
         {
  
         }
+
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {
+            if(cbxBrands.SelectedItem == null && cbxModules.SelectedItem == null && cbxPlaces.SelectedItem == null && cbxTypes.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez selectionné au moins un mot à effacer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                ConnectionDB bdd = new ConnectionDB();
+                if(cbxBrands.SelectedItem != null)
+                {
+                    bdd.DeleteWord(cbxBrands.Text, "brands");
+                }
+                if (cbxModules.SelectedItem != null)
+                {
+                    bdd.DeleteWord(cbxModules.Text, "modules");
+                }
+                if (cbxPlaces.SelectedItem != null)
+                {
+                    bdd.DeleteWord(cbxPlaces.Text, "storageplaces");
+                }
+                if (cbxTypes.SelectedItem != null)
+                {
+                    bdd.DeleteWord(cbxTypes.Text, "types");
+                }
+
+                FrmListModifyAdmin listModifyAdmin = new FrmListModifyAdmin();
+                this.Hide();
+                listModifyAdmin.ShowDialog();
+                this.Close();
+            }
+        }
+
+        private void cmdAdd_Click(object sender, EventArgs e)
+        {
+            if(txtBrands.Text == "" && txtModules.Text == "" && txtPlaces.Text == "" && txtTypes.Text == "")
+            {
+                MessageBox.Show("Veuillez écrire au moins un mot à ajouter", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    ConnectionDB bdd = new ConnectionDB();
+                    if (txtTypes.Text != "")
+                    {
+                        bdd.InsertWord(txtTypes.Text, "types");
+                    }
+                    if (txtPlaces.Text != "")
+                    {
+                        bdd.InsertWord(txtPlaces.Text, "storageplaces");
+                    }
+                    if (txtModules.Text != "")
+                    {
+                        bdd.InsertWord(txtModules.Text, "modules");
+                    }
+                    if (txtBrands.Text != "")
+                    {
+                        bdd.InsertWord(txtBrands.Text, "brands");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+
+                FrmListModifyAdmin listModifyAdmin = new FrmListModifyAdmin();
+                this.Hide();
+                listModifyAdmin.ShowDialog();
+                this.Close();
+            }
+        }
     }
 }

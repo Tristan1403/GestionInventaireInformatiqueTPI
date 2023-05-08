@@ -85,6 +85,7 @@
             this.Controls.Add(this.CmdInsert);
             this.Name = "FrmHomeAdmin";
             this.Text = "HomeAdmin";
+            this.Load += new System.EventHandler(this.FrmHomeAdmin_Load);
             this.ResumeLayout(false);
 
         }
