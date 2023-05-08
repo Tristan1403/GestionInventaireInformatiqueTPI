@@ -103,6 +103,7 @@
             this.Controls.Add(this.cmdHomeLogin);
             this.Name = "FrmloginAdmin";
             this.Text = "loginAdmin";
+            this.Load += new System.EventHandler(this.FrmloginAdmin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

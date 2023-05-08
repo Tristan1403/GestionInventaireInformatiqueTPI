@@ -10,6 +10,7 @@ using Org.BouncyCastle.Tls.Crypto.Impl.BC;
 using System.Linq.Expressions;
 using Org.BouncyCastle.Utilities.Collections;
 using static System.Formats.Asn1.AsnWriter;
+using Microsoft.VisualBasic;
 
 
 namespace GestionInventaireClass
@@ -202,6 +203,104 @@ namespace GestionInventaireClass
 
                 cmd.CommandText = "DELETE FROM " + listName + " WHERE name=@WordToDelete;";
                 cmd.Parameters.AddWithValue("@WordToDelete", WordToDelete);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// This method is aimed the id of a player from a pseudo
+        /// </summary>
+        public int GetId(string name, string ListName)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+            int id = -1;
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+                cmd.CommandText = "SELECT id FROM " + ListName + " WHERE " + ListName + ".name = @name;";
+                cmd.Parameters.AddWithValue("@name", name);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    id = Convert.ToInt32(rdr["id"]);
+                }
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+            return id;
+        }
+
+        /// <summary>
+        /// This method is aimed to insert material in the DB
+        /// </summary>
+        public void InsertMaterial(material AddMaterial)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+
+            ConnectionDB bdd = new ConnectionDB();
+            int brands = bdd.GetId(AddMaterial.Brands, "brands");
+            int stockagePlaces = bdd.GetId(AddMaterial.StockagePlaces, "storageplaces");
+            int modules = bdd.GetId(AddMaterial.Modules, "modules");
+            int types = bdd.GetId(AddMaterial.Types, "types");
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+
+                cmd.CommandText = "INSERT INTO materials (`name`, `description`, `date of purchase`, `brand_id`, `module_id`, `storage place_id`, `renewal DATE`, quantity, `type_id`, archived) VALUES (@name, @description, @dateOfPurchase," + brands + ", " + modules + ", " + stockagePlaces + ", @renewalDate, @quantity, " + types + ", " + 0 + ");";
+                cmd.Parameters.AddWithValue("@name", AddMaterial.Name);
+                cmd.Parameters.AddWithValue("@description", AddMaterial.Description);
+                cmd.Parameters.AddWithValue("@dateOfPurchase", AddMaterial.PurchaseDate);
+                cmd.Parameters.AddWithValue("@renewalDate", AddMaterial.RenewDate);
+                cmd.Parameters.AddWithValue("@quantity", AddMaterial.Quantity);
 
                 // Exécution de la commande SQL
                 rdr = cmd.ExecuteReader();

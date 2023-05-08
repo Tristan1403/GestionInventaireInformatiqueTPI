@@ -41,8 +41,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.txtRenewDate = new System.Windows.Forms.TextBox();
-            this.txtPurchaseDate = new System.Windows.Forms.TextBox();
             this.cbxArchived = new System.Windows.Forms.CheckBox();
             this.cmdAddModify = new System.Windows.Forms.Button();
             this.cmdHomeAddModify = new System.Windows.Forms.Button();
@@ -50,6 +48,9 @@
             this.cbxStockagePlace = new System.Windows.Forms.ComboBox();
             this.cbxModule = new System.Windows.Forms.ComboBox();
             this.cbxType = new System.Windows.Forms.ComboBox();
+            this.dateTPPurchaseDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTPRewnewalDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // lblName
@@ -146,41 +147,27 @@
             // 
             this.txtName.Location = new System.Drawing.Point(234, 50);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(121, 23);
+            this.txtName.Size = new System.Drawing.Size(200, 23);
             this.txtName.TabIndex = 10;
             // 
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(234, 81);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(121, 23);
+            this.txtDescription.Size = new System.Drawing.Size(200, 23);
             this.txtDescription.TabIndex = 11;
             // 
             // txtQuantity
             // 
             this.txtQuantity.Location = new System.Drawing.Point(234, 242);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(121, 23);
+            this.txtQuantity.Size = new System.Drawing.Size(200, 23);
             this.txtQuantity.TabIndex = 14;
-            // 
-            // txtRenewDate
-            // 
-            this.txtRenewDate.Location = new System.Drawing.Point(234, 217);
-            this.txtRenewDate.Name = "txtRenewDate";
-            this.txtRenewDate.Size = new System.Drawing.Size(121, 23);
-            this.txtRenewDate.TabIndex = 15;
-            // 
-            // txtPurchaseDate
-            // 
-            this.txtPurchaseDate.Location = new System.Drawing.Point(234, 110);
-            this.txtPurchaseDate.Name = "txtPurchaseDate";
-            this.txtPurchaseDate.Size = new System.Drawing.Size(121, 23);
-            this.txtPurchaseDate.TabIndex = 19;
             // 
             // cbxArchived
             // 
             this.cbxArchived.AutoSize = true;
-            this.cbxArchived.Location = new System.Drawing.Point(291, 306);
+            this.cbxArchived.Location = new System.Drawing.Point(330, 304);
             this.cbxArchived.Name = "cbxArchived";
             this.cbxArchived.Size = new System.Drawing.Size(15, 14);
             this.cbxArchived.TabIndex = 21;
@@ -194,6 +181,7 @@
             this.cmdAddModify.TabIndex = 23;
             this.cmdAddModify.Text = "ajouter/modifier";
             this.cmdAddModify.UseVisualStyleBackColor = true;
+            this.cmdAddModify.Click += new System.EventHandler(this.cmdAddModify_Click);
             // 
             // cmdHomeAddModify
             // 
@@ -207,41 +195,69 @@
             // 
             // cbxBrand
             // 
+            this.cbxBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBrand.FormattingEnabled = true;
             this.cbxBrand.Location = new System.Drawing.Point(234, 138);
             this.cbxBrand.Name = "cbxBrand";
-            this.cbxBrand.Size = new System.Drawing.Size(121, 23);
+            this.cbxBrand.Size = new System.Drawing.Size(200, 23);
             this.cbxBrand.TabIndex = 25;
             // 
             // cbxStockagePlace
             // 
+            this.cbxStockagePlace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStockagePlace.FormattingEnabled = true;
             this.cbxStockagePlace.Location = new System.Drawing.Point(234, 192);
             this.cbxStockagePlace.Name = "cbxStockagePlace";
-            this.cbxStockagePlace.Size = new System.Drawing.Size(121, 23);
+            this.cbxStockagePlace.Size = new System.Drawing.Size(200, 23);
             this.cbxStockagePlace.TabIndex = 26;
             // 
             // cbxModule
             // 
+            this.cbxModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxModule.FormattingEnabled = true;
             this.cbxModule.Location = new System.Drawing.Point(234, 165);
             this.cbxModule.Name = "cbxModule";
-            this.cbxModule.Size = new System.Drawing.Size(121, 23);
+            this.cbxModule.Size = new System.Drawing.Size(200, 23);
             this.cbxModule.TabIndex = 27;
             // 
             // cbxType
             // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
             this.cbxType.Location = new System.Drawing.Point(234, 268);
             this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 23);
+            this.cbxType.Size = new System.Drawing.Size(200, 23);
             this.cbxType.TabIndex = 28;
+            // 
+            // dateTPPurchaseDate
+            // 
+            this.dateTPPurchaseDate.Location = new System.Drawing.Point(234, 110);
+            this.dateTPPurchaseDate.Name = "dateTPPurchaseDate";
+            this.dateTPPurchaseDate.Size = new System.Drawing.Size(200, 23);
+            this.dateTPPurchaseDate.TabIndex = 29;
+            // 
+            // dateTPRewnewalDate
+            // 
+            this.dateTPRewnewalDate.Location = new System.Drawing.Point(234, 217);
+            this.dateTPRewnewalDate.Name = "dateTPRewnewalDate";
+            this.dateTPRewnewalDate.Size = new System.Drawing.Size(200, 23);
+            this.dateTPRewnewalDate.TabIndex = 30;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(477, 453);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 31;
             // 
             // frmAddModifyMaterials
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTPRewnewalDate);
+            this.Controls.Add(this.dateTPPurchaseDate);
             this.Controls.Add(this.cbxType);
             this.Controls.Add(this.cbxModule);
             this.Controls.Add(this.cbxStockagePlace);
@@ -249,8 +265,6 @@
             this.Controls.Add(this.cmdHomeAddModify);
             this.Controls.Add(this.cmdAddModify);
             this.Controls.Add(this.cbxArchived);
-            this.Controls.Add(this.txtPurchaseDate);
-            this.Controls.Add(this.txtRenewDate);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
@@ -266,6 +280,7 @@
             this.Controls.Add(this.lblName);
             this.Name = "frmAddModifyMaterials";
             this.Text = "AddModifyMaterials";
+            this.Load += new System.EventHandler(this.frmAddModifyMaterials_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,8 +301,6 @@
         private TextBox txtName;
         private TextBox txtDescription;
         private TextBox txtQuantity;
-        private TextBox txtRenewDate;
-        private TextBox txtPurchaseDate;
         private CheckBox cbxArchived;
         private Button cmdAddModify;
         private Button cmdHomeAddModify;
@@ -295,5 +308,8 @@
         private ComboBox cbxStockagePlace;
         private ComboBox cbxModule;
         private ComboBox cbxType;
+        private DateTimePicker dateTPPurchaseDate;
+        private DateTimePicker dateTPRewnewalDate;
+        private DateTimePicker dateTimePicker1;
     }
 }

@@ -68,5 +68,10 @@ namespace GestionInventaireFront
             home.ShowDialog();
             this.Close();
         }
+
+        private void FrmloginAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
