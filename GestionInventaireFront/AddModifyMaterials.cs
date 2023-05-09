@@ -1,4 +1,5 @@
 ﻿using GestionInventaireClass;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,20 +12,28 @@ using System.Windows.Forms;
 
 namespace GestionInventaireFront
 {
+    /// <summary>
+    /// This form is usefull to add new material and you get there if you double click on smt in the ListMaterialAdmin
+    /// </summary>
     public partial class frmAddModifyMaterials : Form
     {
+        //init var for the modification
         material materialModify;
         bool modifyOrAdd;
+        string name;
         public frmAddModifyMaterials(material materialModify, bool modifyOrAdd)
         {
             InitializeComponent();
 
+            // materialModify has the data we want to monify
             this.materialModify = materialModify;
+            //modifyOrAdd is true for a modification and fals for an add
             this.modifyOrAdd = modifyOrAdd;
         }
 
         private void cmdHomeAddModify_Click(object sender, EventArgs e)
         {
+            //go the admin home
             FrmHomeAdmin homeAdmin = new FrmHomeAdmin();
             this.Hide();
             homeAdmin.ShowDialog();
@@ -33,26 +42,57 @@ namespace GestionInventaireFront
 
         private void cmdAddModify_Click(object sender, EventArgs e)
         {
+            //check if everything is filled
             if(txtName.Text != "" || txtDescription.Text != "" || cbxBrand.SelectedItem != null || cbxModule.SelectedItem != null || cbxStockagePlace.SelectedItem != null || txtQuantity.Text != "" || cbxType.SelectedItem != null)
             {
-                material AddMaterial = new material();
-                AddMaterial.Name = txtName.Text;
-                AddMaterial.Description = txtDescription.Text;
-                AddMaterial.PurchaseDate = dateTPPurchaseDate.Value;
-                AddMaterial.Brands = cbxBrand.SelectedItem.ToString();
-                AddMaterial.Modules = cbxModule.SelectedItem.ToString();
-                AddMaterial.StockagePlaces = cbxStockagePlace.SelectedItem.ToString();
-                AddMaterial.RenewDate = dateTPRewnewalDate.Value;
-                AddMaterial.Quantity = Int32.Parse(txtQuantity.Text);
-                AddMaterial.Types = cbxType.SelectedItem.ToString();
-                AddMaterial.Archived = false;
+                if(modifyOrAdd == false)
+                {
+                    //create a material with the data, the admin inserted
+                    material AddMaterial = new material();
+                    AddMaterial.Name = txtName.Text;
+                    AddMaterial.Description = txtDescription.Text;
+                    AddMaterial.PurchaseDate = dateTPPurchaseDate.Value;
+                    AddMaterial.Brands = cbxBrand.SelectedItem.ToString();
+                    AddMaterial.Modules = cbxModule.SelectedItem.ToString();
+                    AddMaterial.StockagePlaces = cbxStockagePlace.SelectedItem.ToString();
+                    AddMaterial.RenewDate = dateTPRewnewalDate.Value;
+                    AddMaterial.Quantity = Int32.Parse(txtQuantity.Text);
+                    AddMaterial.Types = cbxType.SelectedItem.ToString();
+                    AddMaterial.Archived = false;
 
-                ConnectionDB bdd = new ConnectionDB();
-                bdd.InsertMaterial(AddMaterial);
+                    //insert the material in the DB 
+                    ConnectionDB bdd = new ConnectionDB();
+                    bdd.InsertMaterial(AddMaterial);
 
-                this.Controls.Clear();
-                this.InitializeComponent();
-                MessageBox.Show("le materiel "+ AddMaterial.Name + " a été ajouté à la base de donnée!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //refresh the page
+                    this.Controls.Clear();
+                    this.InitializeComponent();
+                    //tell the admin everything went well
+                    MessageBox.Show("le materiel " + AddMaterial.Name + " a été ajouté à la base de donnée!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string MessageModify = Interaction.InputBox("Veuillez préciser votre changement", "message de modification", "modification");
+
+                    //update a material with the data, the admin inserted
+                    material updateMaterial = new material();
+                    updateMaterial.Name = txtName.Text;
+                    updateMaterial.Description = txtDescription.Text;
+                    updateMaterial.PurchaseDate = dateTPPurchaseDate.Value;
+                    updateMaterial.Brands = cbxBrand.SelectedItem.ToString();
+                    updateMaterial.Modules = cbxModule.SelectedItem.ToString();
+                    updateMaterial.StockagePlaces = cbxStockagePlace.SelectedItem.ToString();
+                    updateMaterial.RenewDate = dateTPRewnewalDate.Value;
+                    updateMaterial.Quantity = Int32.Parse(txtQuantity.Text);
+                    updateMaterial.Types = cbxType.SelectedItem.ToString();
+                    updateMaterial.Archived = false;
+
+                    //insert the material in the DB 
+                    ConnectionDB bdd = new ConnectionDB();
+                    int id = bdd.GetId(name,"materials");
+                    bdd.UpdateMaterial(updateMaterial, id, MessageModify);
+                    MessageBox.Show("le materiel " + txtName.Text + " a été modifé dans la base de donnée!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -62,8 +102,11 @@ namespace GestionInventaireFront
 
         private void frmAddModifyMaterials_Load(object sender, EventArgs e)
         {
+            name = materialModify.Name;
+            //if modifyOrAdd is true then it is a modification 
             if(modifyOrAdd == true)
             {
+                //set the base data from the materal we want to modify
                 ConnectionDB bdd = new ConnectionDB();
                 txtName.Text = materialModify.Name;
                 txtDescription.Text = materialModify.Description;
@@ -85,7 +128,9 @@ namespace GestionInventaireFront
                 rdbArchived.Checked = materialModify.Archived;
             }
             else
+            //if modifyOrAdd is false then a material is added
             {
+                //insert data in the combobox
                 ConnectionDB bdd = new ConnectionDB();
                 List<string> brands = new List<string>();
                 string listName = "brands";

@@ -296,7 +296,7 @@ namespace GestionInventaireClass
                 MySqlCommand cmd = this.connection.CreateCommand();
 
                 // Requête SQL
-
+                //insert the material in the DB
                 cmd.CommandText = "INSERT INTO materials (`name`, `description`, `date of purchase`, `brand_id`, `module_id`, `storage place_id`, `renewal DATE`, quantity, `type_id`, archived) VALUES (@name, @description, @dateOfPurchase," + brands + ", " + modules + ", " + stockagePlaces + ", @renewalDate, @quantity, " + types + ", " + 0 + ");";
                 cmd.Parameters.AddWithValue("@name", AddMaterial.Name);
                 cmd.Parameters.AddWithValue("@description", AddMaterial.Description);
@@ -348,6 +348,7 @@ namespace GestionInventaireClass
                 // Exécution de la commande SQL
                 rdr = cmd.ExecuteReader();
 
+                //create a material with the DB data and add him on a list
                 while (rdr.Read())
                 {
                     material material = new material();
@@ -383,6 +384,105 @@ namespace GestionInventaireClass
                 }
             }
             return lstMaterial;
+        }
+
+        /// <summary>
+        /// This method is aimed to insert material in the DB
+        /// </summary>
+        public void UpdateMaterial(material AddMaterial, int id, string message)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+
+            ConnectionDB bdd = new ConnectionDB();
+            int brands = bdd.GetId(AddMaterial.Brands, "brands");
+            int stockagePlaces = bdd.GetId(AddMaterial.StockagePlaces, "storageplaces");
+            int modules = bdd.GetId(AddMaterial.Modules, "modules");
+            int types = bdd.GetId(AddMaterial.Types, "types");
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+                //insert the material in the DB
+                cmd.CommandText = "UPDATE materials SET `name` = @name, `description`= @description, `date of purchase` = @dateOfPurchase, `brand_id` = " + brands + ", `module_id` = " + modules + ", `storage place_id` = " + stockagePlaces + ", `renewal DATE` = @renewalDate, quantity = @quantity, `type_id` = " + types + ", archived = @archived   WHERE materials.id = @id;";
+                cmd.Parameters.AddWithValue("@name", AddMaterial.Name);
+                cmd.Parameters.AddWithValue("@description", AddMaterial.Description);
+                cmd.Parameters.AddWithValue("@dateOfPurchase", AddMaterial.PurchaseDate);
+                cmd.Parameters.AddWithValue("@renewalDate", AddMaterial.RenewDate);
+                cmd.Parameters.AddWithValue("@quantity", AddMaterial.Quantity);
+                cmd.Parameters.AddWithValue("@archived", AddMaterial.Archived);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+
+                //Close the connection
+                connection.Close();
+                bdd.InsertMessage(message, id);
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// This method is aimed to insert words to the lists
+        /// </summary>
+        public void InsertMessage(string message, int idMaterial)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+
+                cmd.CommandText = "INSERT INTO modifications (`modification`, `date`,`material_id`) VALUES(@message, @date, @id);";
+                cmd.Parameters.AddWithValue("@message", message);
+                cmd.Parameters.AddWithValue("@date", DateTime.Now);
+                cmd.Parameters.AddWithValue("@id", idMaterial);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+                throw new Exception("Ce mot existe déjà dans la base de données!");
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
         }
     }
 }

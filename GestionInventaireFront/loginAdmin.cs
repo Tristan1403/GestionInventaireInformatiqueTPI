@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace GestionInventaireFront
 {
+    /// <summary>
+    /// This form is the login for admin
+    /// </summary>
     public partial class FrmloginAdmin : Form
     {
         public FrmloginAdmin()

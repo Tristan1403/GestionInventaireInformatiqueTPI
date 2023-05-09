@@ -1,4 +1,5 @@
 using GestionInventaireClass;
+using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Tls.Crypto.Impl.BC;
 
@@ -99,18 +100,33 @@ namespace GestionInventaireTests
         }
 
         [Test]
-        public void InsertMaterialTest()
+        public void CheckMaterialInsertAndGetMaterial()
         {
             //Arrange
             ConnectionDB bdd = new ConnectionDB();
-            string storageplaces = "SC-C111";
-            int idStoragePlaces = -1;
-            int idExpected = -50;
+            List<material> listMaterialTest = new List<material>();
+            material materialTest = new material();
+            material materialExpected = new material();
+            materialExpected.Name = "PC10";
+            materialExpected.Description = "PC de test";
+            materialExpected.PurchaseDate = DateTime.Now.Date;
+            materialExpected.Brands = "HP";
+            materialExpected.Modules = "ICT-160";
+            materialExpected.StockagePlaces = "SC-C236";
+            materialExpected.RenewDate = DateTime.Now.Date;
+            materialExpected.Quantity = 1;
+            materialExpected.Types = "pc";
+            materialExpected.Archived = false;
 
             //Act
-            idStoragePlaces = bdd.GetId(storageplaces, "storageplaces");
+            bdd.InsertMaterial(materialExpected);
+            listMaterialTest = bdd.GetMaterials();
+            foreach(material material in listMaterialTest)
+            {
+                materialTest = material;
+            }
             //Assert
-            Assert.AreEqual(idExpected, idStoragePlaces);
+            Assert.AreEqual(materialExpected, materialTest);
         }
     }
 }

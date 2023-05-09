@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace GestionInventaireFront
 {
+    /// <summary>
+    /// This form is usefull to choose if you want to insert a new materail, modify one, check the list of material or add, delete word from the lists
+    /// </summary>
     public partial class FrmHomeAdmin : Form
     {
         public FrmHomeAdmin()

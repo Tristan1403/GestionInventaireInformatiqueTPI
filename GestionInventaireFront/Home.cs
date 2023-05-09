@@ -1,5 +1,8 @@
 namespace GestionInventaireFront
 {
+    /// <summary>
+    /// This form is usefull to choose between the admin part and user part
+    /// </summary>
     public partial class FrmHome : Form
     {
         public FrmHome()
@@ -9,6 +12,7 @@ namespace GestionInventaireFront
 
         private void CmdUser_Click(object sender, EventArgs e)
         {
+            //open the user part
             frmSearchMaterialsUser search = new frmSearchMaterialsUser();
             this.Hide();
             search.ShowDialog();
@@ -17,6 +21,7 @@ namespace GestionInventaireFront
 
         private void CmdAdmin_Click(object sender, EventArgs e)
         {
+            //go to the admin login
             FrmloginAdmin loginAdmin = new FrmloginAdmin();
             this.Hide();
             loginAdmin.ShowDialog();

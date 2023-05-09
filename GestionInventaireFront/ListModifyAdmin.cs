@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace GestionInventaireFront
 {
+    /// <summary>
+    /// This form is usefull to modify the 4 lists 
+    /// </summary>
     public partial class FrmListModifyAdmin : Form
     {
         public FrmListModifyAdmin()

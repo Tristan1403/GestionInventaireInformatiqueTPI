@@ -17,6 +17,9 @@ using MySqlX.XDevAPI.Relational;
 
 namespace GestionInventaireFront
 {
+    /// <summary>
+    /// This form show you every material regestered in the data base
+    /// </summary>
     public partial class FrmListMaterialsAdmin : Form
     {
         public FrmListMaterialsAdmin()
