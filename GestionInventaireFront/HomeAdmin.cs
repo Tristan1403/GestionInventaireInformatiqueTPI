@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionInventaireClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,8 @@ namespace GestionInventaireFront
 
         private void CmdInsert_Click(object sender, EventArgs e)
         {
-            frmAddModifyMaterials addModifyMaterial = new frmAddModifyMaterials();
+            material materialAdd = new material();
+            frmAddModifyMaterials addModifyMaterial = new frmAddModifyMaterials(materialAdd, false);
             this.Hide();
             addModifyMaterial.ShowDialog();
             this.Close();

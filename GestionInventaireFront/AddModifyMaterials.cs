@@ -13,9 +13,14 @@ namespace GestionInventaireFront
 {
     public partial class frmAddModifyMaterials : Form
     {
-        public frmAddModifyMaterials()
+        material materialModify;
+        bool modifyOrAdd;
+        public frmAddModifyMaterials(material materialModify, bool modifyOrAdd)
         {
             InitializeComponent();
+
+            this.materialModify = materialModify;
+            this.modifyOrAdd = modifyOrAdd;
         }
 
         private void cmdHomeAddModify_Click(object sender, EventArgs e)
@@ -57,16 +62,42 @@ namespace GestionInventaireFront
 
         private void frmAddModifyMaterials_Load(object sender, EventArgs e)
         {
-            ConnectionDB bdd = new ConnectionDB();
-            List<string> brands = new List<string>();
-            string listName = "brands";
-            cbxBrand.Items.AddRange(bdd.GetList(listName).ToArray());
-            listName = "types";
-            cbxType.Items.AddRange(bdd.GetList(listName).ToArray());
-            listName = "modules";
-            cbxModule.Items.AddRange(bdd.GetList(listName).ToArray());
-            listName = "storageplaces";
-            cbxStockagePlace.Items.AddRange(bdd.GetList(listName).ToArray());
+            if(modifyOrAdd == true)
+            {
+                ConnectionDB bdd = new ConnectionDB();
+                txtName.Text = materialModify.Name;
+                txtDescription.Text = materialModify.Description;
+                dateTPPurchaseDate.Value = materialModify.PurchaseDate;
+                string listName = "brands";
+                cbxBrand.Items.AddRange(bdd.GetList(listName).ToArray());
+                cbxBrand.SelectedItem = materialModify.Brands;
+                listName = "storageplaces";
+                cbxStockagePlace.Items.AddRange(bdd.GetList(listName).ToArray());
+                cbxStockagePlace.SelectedItem = materialModify.StockagePlaces;
+                listName = "modules";
+                cbxModule.Items.AddRange(bdd.GetList(listName).ToArray());
+                cbxModule.SelectedItem = materialModify.Modules;
+                dateTPRewnewalDate.Value = materialModify.RenewDate;
+                txtQuantity.Text = materialModify.Quantity.ToString();
+                listName = "types";
+                cbxType.Items.AddRange(bdd.GetList(listName).ToArray());
+                cbxType.SelectedItem = materialModify.Types;
+                rdbArchived.Checked = materialModify.Archived;
+            }
+            else
+            {
+                ConnectionDB bdd = new ConnectionDB();
+                List<string> brands = new List<string>();
+                string listName = "brands";
+                cbxBrand.Items.AddRange(bdd.GetList(listName).ToArray());
+                listName = "types";
+                cbxType.Items.AddRange(bdd.GetList(listName).ToArray());
+                listName = "modules";
+                cbxModule.Items.AddRange(bdd.GetList(listName).ToArray());
+                listName = "storageplaces";
+                cbxStockagePlace.Items.AddRange(bdd.GetList(listName).ToArray());
+                rdbArchived.Enabled = false;
+            }  
         }
     }
 }

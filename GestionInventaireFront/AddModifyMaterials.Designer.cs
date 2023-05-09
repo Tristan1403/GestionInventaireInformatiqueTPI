@@ -41,7 +41,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.cbxArchived = new System.Windows.Forms.CheckBox();
+            this.rdbArchived = new System.Windows.Forms.CheckBox();
             this.cmdAddModify = new System.Windows.Forms.Button();
             this.cmdHomeAddModify = new System.Windows.Forms.Button();
             this.cbxBrand = new System.Windows.Forms.ComboBox();
@@ -164,14 +164,14 @@
             this.txtQuantity.Size = new System.Drawing.Size(200, 23);
             this.txtQuantity.TabIndex = 14;
             // 
-            // cbxArchived
+            // rdbArchived
             // 
-            this.cbxArchived.AutoSize = true;
-            this.cbxArchived.Location = new System.Drawing.Point(330, 304);
-            this.cbxArchived.Name = "cbxArchived";
-            this.cbxArchived.Size = new System.Drawing.Size(15, 14);
-            this.cbxArchived.TabIndex = 21;
-            this.cbxArchived.UseVisualStyleBackColor = true;
+            this.rdbArchived.AutoSize = true;
+            this.rdbArchived.Location = new System.Drawing.Point(330, 304);
+            this.rdbArchived.Name = "rdbArchived";
+            this.rdbArchived.Size = new System.Drawing.Size(15, 14);
+            this.rdbArchived.TabIndex = 21;
+            this.rdbArchived.UseVisualStyleBackColor = true;
             // 
             // cmdAddModify
             // 
@@ -264,7 +264,7 @@
             this.Controls.Add(this.cbxBrand);
             this.Controls.Add(this.cmdHomeAddModify);
             this.Controls.Add(this.cmdAddModify);
-            this.Controls.Add(this.cbxArchived);
+            this.Controls.Add(this.rdbArchived);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
@@ -301,7 +301,7 @@
         private TextBox txtName;
         private TextBox txtDescription;
         private TextBox txtQuantity;
-        private CheckBox cbxArchived;
+        private CheckBox rdbArchived;
         private Button cmdAddModify;
         private Button cmdHomeAddModify;
         private ComboBox cbxBrand;

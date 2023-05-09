@@ -11,6 +11,8 @@ using System.Linq.Expressions;
 using Org.BouncyCastle.Utilities.Collections;
 using static System.Formats.Asn1.AsnWriter;
 using Microsoft.VisualBasic;
+using System.Reflection;
+using System.Xml.Linq;
 
 
 namespace GestionInventaireClass
@@ -322,6 +324,65 @@ namespace GestionInventaireClass
                     rdr.Close();
                 }
             }
+        }
+
+
+        /// <summary>
+        /// This method is aimed the return a list of material
+        /// </summary>
+        public List<material> GetMaterials()
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+            List<material> lstMaterial = new List<material>();
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+                cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id;";
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    material material = new material();
+                    material.Name = rdr.GetString(0);
+                    material.Description = rdr.GetString(1);
+                    material.PurchaseDate = rdr.GetDateTime(2);
+                    material.Brands = rdr.GetString(3);
+                    material.Modules = rdr.GetString(4);
+                    material.StockagePlaces = rdr.GetString(5);
+                    material.RenewDate = rdr.GetDateTime(6);
+                    material.Quantity = rdr.GetInt32(7);
+                    material.Types = rdr.GetString(8);
+                    material.Archived = rdr.GetBoolean(9);
+
+                    lstMaterial.Add(material);
+                }
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+            return lstMaterial;
         }
     }
 }

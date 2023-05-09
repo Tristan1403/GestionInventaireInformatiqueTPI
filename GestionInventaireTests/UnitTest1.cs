@@ -105,7 +105,7 @@ namespace GestionInventaireTests
             ConnectionDB bdd = new ConnectionDB();
             string storageplaces = "SC-C111";
             int idStoragePlaces = -1;
-            int idExpected = 2;
+            int idExpected = -50;
 
             //Act
             idStoragePlaces = bdd.GetId(storageplaces, "storageplaces");
