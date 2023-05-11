@@ -13,6 +13,7 @@ using static System.Formats.Asn1.AsnWriter;
 using Microsoft.VisualBasic;
 using System.Reflection;
 using System.Xml.Linq;
+using MySqlX.XDevAPI.Relational;
 
 
 namespace GestionInventaireClass
@@ -217,6 +218,7 @@ namespace GestionInventaireClass
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error: {0}", ex.ToString());
+                throw new Exception("Cette element est lier à un objet, vous ne pouvez pas le supprimer!");
             }
             finally
             {
@@ -387,7 +389,7 @@ namespace GestionInventaireClass
         }
 
         /// <summary>
-        /// This method is aimed to insert material in the DB
+        /// This method is aimed to update material in the DB
         /// </summary>
         public void UpdateMaterial(material AddMaterial, int id, string message)
         {
@@ -402,7 +404,6 @@ namespace GestionInventaireClass
 
             try
             {
-
                 // Création d'une commande SQL en fonction de l'objet connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
@@ -420,7 +421,6 @@ namespace GestionInventaireClass
                 // Exécution de la commande SQL
                 rdr = cmd.ExecuteReader();
 
-
                 //Close the connection
                 connection.Close();
                 bdd.InsertMessage(message, id);
@@ -429,6 +429,7 @@ namespace GestionInventaireClass
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error: {0}", ex.ToString());
+                throw new Exception("Le nom du matériel est déja existant dans la base de données!");
             }
             finally
             {
@@ -473,7 +474,7 @@ namespace GestionInventaireClass
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error: {0}", ex.ToString());
-                throw new Exception("Ce mot existe déjà dans la base de données!");
+                throw new Exception("Ce message existe déjà dans la base de données!");
             }
             finally
             {

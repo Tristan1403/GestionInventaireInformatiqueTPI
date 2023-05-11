@@ -121,10 +121,9 @@ namespace GestionInventaireTests
             //Act
             bdd.InsertMaterial(materialExpected);
             listMaterialTest = bdd.GetMaterials();
-            foreach(material material in listMaterialTest)
-            {
-                materialTest = material;
-            }
+          
+            materialTest = listMaterialTest[3];
+            
             //Assert
             Assert.AreEqual(materialExpected, materialTest);
         }

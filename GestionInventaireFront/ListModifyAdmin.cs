@@ -46,45 +46,62 @@ namespace GestionInventaireFront
 
         private void cbxModules_SelectedIndexChanged(object sender, EventArgs e)
         {
- 
+
         }
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            if(cbxBrands.SelectedItem == null && cbxModules.SelectedItem == null && cbxPlaces.SelectedItem == null && cbxTypes.SelectedItem == null)
+            try
             {
-                MessageBox.Show("Veuillez selectionné au moins un mot à effacer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                ConnectionDB bdd = new ConnectionDB();
-                if(cbxBrands.SelectedItem != null)
+                if (cbxBrands.SelectedItem == null && cbxModules.SelectedItem == null && cbxPlaces.SelectedItem == null && cbxTypes.SelectedItem == null)
                 {
-                    bdd.DeleteWord(cbxBrands.Text, "brands");
+                    MessageBox.Show("Veuillez selectionné au moins un mot à effacer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (cbxModules.SelectedItem != null)
+                else
                 {
-                    bdd.DeleteWord(cbxModules.Text, "modules");
-                }
-                if (cbxPlaces.SelectedItem != null)
-                {
-                    bdd.DeleteWord(cbxPlaces.Text, "storageplaces");
-                }
-                if (cbxTypes.SelectedItem != null)
-                {
-                    bdd.DeleteWord(cbxTypes.Text, "types");
-                }
+                    ConnectionDB bdd = new ConnectionDB();
+                    int itemDelete = 0;
+                    if (cbxBrands.SelectedItem != null)
+                    {
+                        itemDelete++;
+                        bdd.DeleteWord(cbxBrands.Text, "brands");
+                    }
+                    if (cbxModules.SelectedItem != null)
+                    {
+                        itemDelete++;
+                        bdd.DeleteWord(cbxModules.Text, "modules");
+                    }
+                    if (cbxPlaces.SelectedItem != null)
+                    {
+                        itemDelete++;
+                        bdd.DeleteWord(cbxPlaces.Text, "storageplaces");
+                    }
+                    if (cbxTypes.SelectedItem != null)
+                    {
+                        itemDelete++;
+                        bdd.DeleteWord(cbxTypes.Text, "types");
+                    }
 
-                FrmListModifyAdmin listModifyAdmin = new FrmListModifyAdmin();
-                this.Hide();
-                listModifyAdmin.ShowDialog();
-                this.Close();
+                    MessageBox.Show("Vous avez bien supprimer " + itemDelete + " mot(s)!", "mots effacés", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            FrmListModifyAdmin listModifyAdmin = new FrmListModifyAdmin();
+            this.Hide();
+            listModifyAdmin.ShowDialog();
+            this.Close();
         }
+
+
 
         private void cmdAdd_Click(object sender, EventArgs e)
         {
-            if(txtBrands.Text == "" && txtModules.Text == "" && txtPlaces.Text == "" && txtTypes.Text == "")
+            if (txtBrands.Text == "" && txtModules.Text == "" && txtPlaces.Text == "" && txtTypes.Text == "")
             {
                 MessageBox.Show("Veuillez écrire au moins un mot à ajouter", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -93,22 +110,29 @@ namespace GestionInventaireFront
                 try
                 {
                     ConnectionDB bdd = new ConnectionDB();
+                    int addItem = 0;
                     if (txtTypes.Text != "")
                     {
+                        addItem++;
                         bdd.InsertWord(txtTypes.Text, "types");
                     }
                     if (txtPlaces.Text != "")
                     {
+                        addItem++;
                         bdd.InsertWord(txtPlaces.Text, "storageplaces");
                     }
                     if (txtModules.Text != "")
                     {
+                        addItem++;
                         bdd.InsertWord(txtModules.Text, "modules");
                     }
                     if (txtBrands.Text != "")
                     {
+                        addItem++;
                         bdd.InsertWord(txtBrands.Text, "brands");
                     }
+
+                    MessageBox.Show("Vous avez bien ajouté " + addItem + " mot(s)!", "mots ajoutés", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {

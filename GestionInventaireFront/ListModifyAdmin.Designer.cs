@@ -56,6 +56,7 @@
             // 
             // cbxBrands
             // 
+            this.cbxBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBrands.FormattingEnabled = true;
             this.cbxBrands.Location = new System.Drawing.Point(42, 154);
             this.cbxBrands.Name = "cbxBrands";
@@ -88,6 +89,7 @@
             // 
             // cbxModules
             // 
+            this.cbxModules.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxModules.FormattingEnabled = true;
             this.cbxModules.Location = new System.Drawing.Point(196, 154);
             this.cbxModules.Name = "cbxModules";
@@ -113,6 +115,7 @@
             // 
             // cbxPlaces
             // 
+            this.cbxPlaces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPlaces.FormattingEnabled = true;
             this.cbxPlaces.Location = new System.Drawing.Point(357, 154);
             this.cbxPlaces.Name = "cbxPlaces";
@@ -137,6 +140,7 @@
             // 
             // cbxTypes
             // 
+            this.cbxTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTypes.FormattingEnabled = true;
             this.cbxTypes.Location = new System.Drawing.Point(508, 154);
             this.cbxTypes.Name = "cbxTypes";
