@@ -21,15 +21,72 @@ namespace GestionInventaireFront
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if(txtName.Text != "" || txtDescription.Text != "" || txtQuantity.Text != "")
-            { 
-
+            DateTime minDate = new DateTime(1900, 1, 1);
+            int checkCriteria = 0;
+            if (txtName.Text != "")
+            {
+                materialSend.Name = txtName.Text;
+                checkCriteria++;
             }
-            FrmListMaterialsUser listMaterialsUser = new FrmListMaterialsUser(materialSend);
-            this.Hide();
-            listMaterialsUser.ShowDialog();
-            this.Close();
+            if (txtDescription.Text != "") 
+            {
+                materialSend.Description = txtDescription.Text;
+                checkCriteria++;
+            }
+            if (txtQuantity.Text != "") 
+            {
+                materialSend.Quantity = Int32.Parse(txtQuantity.Text);
+                checkCriteria++;
+            } 
+            if(cbxBrand.Text != "")
+            {
+                materialSend.Brands = cbxBrand.SelectedItem.ToString();
+                checkCriteria++;
+            }
+            if(cbxModule.Text != "")
+            {
+                materialSend.Modules = cbxModule.SelectedItem.ToString();
+                checkCriteria++;
+            }
+            if(cbxStoragePlace.Text != "")
+            {
+                materialSend.StockagePlaces = cbxStoragePlace.SelectedItem.ToString();
+                checkCriteria++;
+            }
+            if(cbxType.Text != "")
+            {
+                materialSend.Types = cbxType.SelectedItem.ToString();
+                checkCriteria++;
+            }
+            if(dateTPRenewDate.Value != minDate)
+            {
+                materialSend.RenewDate = dateTPRenewDate.Value;
+                checkCriteria++;
+            }
+            else
+            {
+                materialSend.PurchaseDate = DateTime.MinValue;
+            }
+            if (dateTPPurchaseDate.Value != minDate)
+            {
+                materialSend.PurchaseDate = dateTPPurchaseDate.Value;
+                checkCriteria++;
+            }
+            else
+            {
+                materialSend.PurchaseDate = DateTime.MinValue;
+            }
+            if (checkCriteria > 0)
+            {
+                FrmListMaterialsUser listMaterialsUser = new FrmListMaterialsUser(materialSend);
+                this.Hide();
+                listMaterialsUser.ShowDialog();
+                this.Close();
+            }             
+            else
+            {
+                MessageBox.Show("Veuillez choisir au moins un critère", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }     
         }
 
         private void cmdHomeSearch_Click(object sender, EventArgs e)

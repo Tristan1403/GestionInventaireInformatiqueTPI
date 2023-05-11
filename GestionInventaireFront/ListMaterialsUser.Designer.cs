@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cmdHomeListAddDelete = new System.Windows.Forms.Button();
+            this.cmdSearchMaterial = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,15 +46,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // cmdHomeListAddDelete
+            // cmdSearchMaterial
             // 
-            this.cmdHomeListAddDelete.Location = new System.Drawing.Point(540, 425);
-            this.cmdHomeListAddDelete.Name = "cmdHomeListAddDelete";
-            this.cmdHomeListAddDelete.Size = new System.Drawing.Size(125, 48);
-            this.cmdHomeListAddDelete.TabIndex = 4;
-            this.cmdHomeListAddDelete.Text = "accueil";
-            this.cmdHomeListAddDelete.UseVisualStyleBackColor = true;
-            this.cmdHomeListAddDelete.Click += new System.EventHandler(this.cmdHomeListAddDelete_Click);
+            this.cmdSearchMaterial.Location = new System.Drawing.Point(540, 425);
+            this.cmdSearchMaterial.Name = "cmdSearchMaterial";
+            this.cmdSearchMaterial.Size = new System.Drawing.Size(125, 48);
+            this.cmdSearchMaterial.TabIndex = 4;
+            this.cmdSearchMaterial.Text = "accueil";
+            this.cmdSearchMaterial.UseVisualStyleBackColor = true;
+            this.cmdSearchMaterial.Click += new System.EventHandler(this.cmdHomeListAddDelete_Click);
             // 
             // dataGridView1
             // 
@@ -148,7 +148,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 485);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.cmdHomeListAddDelete);
+            this.Controls.Add(this.cmdSearchMaterial);
             this.Name = "FrmListMaterialsUser";
             this.Text = "ListeMaterialsUser";
             this.Load += new System.EventHandler(this.FrmListMaterialsUser_Load);
@@ -160,7 +160,7 @@
 
         #endregion
 
-        private Button cmdHomeListAddDelete;
+        private Button cmdSearchMaterial;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;

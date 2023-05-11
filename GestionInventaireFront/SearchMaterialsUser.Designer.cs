@@ -48,14 +48,14 @@
             this.cmdHomeSearch = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.dateTPPurchaseDate = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTPRenewDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // cbxType
             // 
             this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(188, 335);
+            this.cbxType.Location = new System.Drawing.Point(187, 335);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(200, 23);
             this.cbxType.TabIndex = 46;
@@ -226,20 +226,20 @@
             this.dateTPPurchaseDate.TabIndex = 50;
             this.dateTPPurchaseDate.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
-            // dateTimePicker1
+            // dateTPRenewDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(188, 277);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 51;
-            this.dateTimePicker1.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTPRenewDate.Location = new System.Drawing.Point(188, 277);
+            this.dateTPRenewDate.Name = "dateTPRenewDate";
+            this.dateTPRenewDate.Size = new System.Drawing.Size(200, 23);
+            this.dateTPRenewDate.TabIndex = 51;
+            this.dateTPRenewDate.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // frmSearchMaterialsUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTPRenewDate);
             this.Controls.Add(this.dateTPPurchaseDate);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.cmdHomeSearch);
@@ -290,6 +290,6 @@
         private Button cmdHomeSearch;
         private Label lblSearch;
         private DateTimePicker dateTPPurchaseDate;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTPRenewDate;
     }
 }
