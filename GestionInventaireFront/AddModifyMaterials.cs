@@ -29,6 +29,7 @@ namespace GestionInventaireFront
             this.materialModify = materialModify;
             //modifyOrAdd is true for a modification and fals for an add
             this.modifyOrAdd = modifyOrAdd;
+            name = materialModify.Name;
             rdbArchived.Enabled = false;
         }
 

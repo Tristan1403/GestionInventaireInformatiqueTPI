@@ -39,7 +39,7 @@ namespace GestionInventaireFront
         private void FrmListMaterialsAdmin_Load(object sender, EventArgs e)
         {
             ConnectionDB bdd = new ConnectionDB();
-            dataGridView1.DataSource = bdd.GetMaterials();
+            dataGridView1.DataSource = bdd.GetMaterials(false);
         }
 
 

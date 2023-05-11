@@ -32,8 +32,6 @@
             this.cbxModule = new System.Windows.Forms.ComboBox();
             this.cbxStoragePlace = new System.Windows.Forms.ComboBox();
             this.cbxBrand = new System.Windows.Forms.ComboBox();
-            this.txtPurchaseDate = new System.Windows.Forms.TextBox();
-            this.txtRenewDate = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -49,79 +47,71 @@
             this.cmdSearch = new System.Windows.Forms.Button();
             this.cmdHomeSearch = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.dateTPPurchaseDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // cbxType
             // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(187, 316);
+            this.cbxType.Location = new System.Drawing.Point(188, 335);
             this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 23);
+            this.cbxType.Size = new System.Drawing.Size(200, 23);
             this.cbxType.TabIndex = 46;
             // 
             // cbxModule
             // 
+            this.cbxModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxModule.FormattingEnabled = true;
-            this.cbxModule.Location = new System.Drawing.Point(187, 213);
+            this.cbxModule.Location = new System.Drawing.Point(187, 218);
             this.cbxModule.Name = "cbxModule";
-            this.cbxModule.Size = new System.Drawing.Size(121, 23);
+            this.cbxModule.Size = new System.Drawing.Size(200, 23);
             this.cbxModule.TabIndex = 45;
             // 
             // cbxStoragePlace
             // 
+            this.cbxStoragePlace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStoragePlace.FormattingEnabled = true;
-            this.cbxStoragePlace.Location = new System.Drawing.Point(187, 240);
+            this.cbxStoragePlace.Location = new System.Drawing.Point(187, 248);
             this.cbxStoragePlace.Name = "cbxStoragePlace";
-            this.cbxStoragePlace.Size = new System.Drawing.Size(121, 23);
+            this.cbxStoragePlace.Size = new System.Drawing.Size(200, 23);
             this.cbxStoragePlace.TabIndex = 44;
             // 
             // cbxBrand
             // 
+            this.cbxBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBrand.FormattingEnabled = true;
             this.cbxBrand.Location = new System.Drawing.Point(187, 186);
             this.cbxBrand.Name = "cbxBrand";
-            this.cbxBrand.Size = new System.Drawing.Size(121, 23);
+            this.cbxBrand.Size = new System.Drawing.Size(200, 23);
             this.cbxBrand.TabIndex = 43;
-            // 
-            // txtPurchaseDate
-            // 
-            this.txtPurchaseDate.Location = new System.Drawing.Point(187, 158);
-            this.txtPurchaseDate.Name = "txtPurchaseDate";
-            this.txtPurchaseDate.Size = new System.Drawing.Size(121, 23);
-            this.txtPurchaseDate.TabIndex = 42;
-            // 
-            // txtRenewDate
-            // 
-            this.txtRenewDate.Location = new System.Drawing.Point(187, 265);
-            this.txtRenewDate.Name = "txtRenewDate";
-            this.txtRenewDate.Size = new System.Drawing.Size(121, 23);
-            this.txtRenewDate.TabIndex = 41;
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(187, 290);
+            this.txtQuantity.Location = new System.Drawing.Point(187, 306);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(121, 23);
+            this.txtQuantity.Size = new System.Drawing.Size(200, 23);
             this.txtQuantity.TabIndex = 40;
             // 
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(187, 129);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(121, 23);
+            this.txtDescription.Size = new System.Drawing.Size(200, 23);
             this.txtDescription.TabIndex = 39;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(187, 98);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(121, 23);
+            this.txtName.Size = new System.Drawing.Size(200, 23);
             this.txtName.TabIndex = 38;
             // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(50, 298);
+            this.lblQuantity.Location = new System.Drawing.Point(47, 306);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(51, 15);
             this.lblQuantity.TabIndex = 37;
@@ -130,7 +120,7 @@
             // lblRenewDate
             // 
             this.lblRenewDate.AutoSize = true;
-            this.lblRenewDate.Location = new System.Drawing.Point(50, 273);
+            this.lblRenewDate.Location = new System.Drawing.Point(47, 277);
             this.lblRenewDate.Name = "lblRenewDate";
             this.lblRenewDate.Size = new System.Drawing.Size(132, 15);
             this.lblRenewDate.TabIndex = 36;
@@ -139,7 +129,7 @@
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(50, 324);
+            this.lblType.Location = new System.Drawing.Point(50, 335);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(30, 15);
             this.lblType.TabIndex = 35;
@@ -148,7 +138,7 @@
             // lblStoragePlace
             // 
             this.lblStoragePlace.AutoSize = true;
-            this.lblStoragePlace.Location = new System.Drawing.Point(50, 248);
+            this.lblStoragePlace.Location = new System.Drawing.Point(47, 248);
             this.lblStoragePlace.Name = "lblStoragePlace";
             this.lblStoragePlace.Size = new System.Drawing.Size(92, 15);
             this.lblStoragePlace.TabIndex = 34;
@@ -179,7 +169,7 @@
             this.lblPurchaseDate.Name = "lblPurchaseDate";
             this.lblPurchaseDate.Size = new System.Drawing.Size(72, 15);
             this.lblPurchaseDate.TabIndex = 31;
-            this.lblPurchaseDate.Text = "date d\'ahcat";
+            this.lblPurchaseDate.Text = "date d\'achat";
             // 
             // lblDescription
             // 
@@ -201,7 +191,7 @@
             // 
             // cmdSearch
             // 
-            this.cmdSearch.Location = new System.Drawing.Point(284, 359);
+            this.cmdSearch.Location = new System.Drawing.Point(285, 378);
             this.cmdSearch.Name = "cmdSearch";
             this.cmdSearch.Size = new System.Drawing.Size(194, 60);
             this.cmdSearch.TabIndex = 47;
@@ -228,11 +218,29 @@
             this.lblSearch.TabIndex = 49;
             this.lblSearch.Text = "Voici le menu de recherche! Veuillez sélectionner au moins un critère!";
             // 
+            // dateTPPurchaseDate
+            // 
+            this.dateTPPurchaseDate.Location = new System.Drawing.Point(187, 157);
+            this.dateTPPurchaseDate.Name = "dateTPPurchaseDate";
+            this.dateTPPurchaseDate.Size = new System.Drawing.Size(200, 23);
+            this.dateTPPurchaseDate.TabIndex = 50;
+            this.dateTPPurchaseDate.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(188, 277);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 51;
+            this.dateTimePicker1.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            // 
             // frmSearchMaterialsUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTPPurchaseDate);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.cmdHomeSearch);
             this.Controls.Add(this.cmdSearch);
@@ -240,8 +248,6 @@
             this.Controls.Add(this.cbxModule);
             this.Controls.Add(this.cbxStoragePlace);
             this.Controls.Add(this.cbxBrand);
-            this.Controls.Add(this.txtPurchaseDate);
-            this.Controls.Add(this.txtRenewDate);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
@@ -268,8 +274,6 @@
         private ComboBox cbxModule;
         private ComboBox cbxStoragePlace;
         private ComboBox cbxBrand;
-        private TextBox txtPurchaseDate;
-        private TextBox txtRenewDate;
         private TextBox txtQuantity;
         private TextBox txtDescription;
         private TextBox txtName;
@@ -285,5 +289,7 @@
         private Button cmdSearch;
         private Button cmdHomeSearch;
         private Label lblSearch;
+        private DateTimePicker dateTPPurchaseDate;
+        private DateTimePicker dateTimePicker1;
     }
 }

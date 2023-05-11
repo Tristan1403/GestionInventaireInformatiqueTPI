@@ -332,7 +332,7 @@ namespace GestionInventaireClass
         /// <summary>
         /// This method is aimed the return a list of material
         /// </summary>
-        public List<material> GetMaterials()
+        public List<material> GetMaterials(bool trueOrFalse)
         {
             MySqlDataReader rdr = null;
             connection.Open();
@@ -344,9 +344,17 @@ namespace GestionInventaireClass
                 // Création d'une commande SQL en fonction de l'objet connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
-                cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id;";
-
+                if(trueOrFalse == false)
+                {
+                    // Requête SQL
+                    cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id;";
+                }
+                else
+                {
+                    // Requête SQL
+                    cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id WHERE `archived` = 0;";
+                }
+                     
                 // Exécution de la commande SQL
                 rdr = cmd.ExecuteReader();
 
@@ -423,7 +431,7 @@ namespace GestionInventaireClass
 
                 //Close the connection
                 connection.Close();
-                bdd.InsertMessage(message, id);
+                //bdd.InsertMessage(message, id);
 
             }
             catch (MySqlException ex)

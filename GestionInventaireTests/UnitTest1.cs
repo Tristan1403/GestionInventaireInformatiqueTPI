@@ -120,7 +120,7 @@ namespace GestionInventaireTests
 
             //Act
             bdd.InsertMaterial(materialExpected);
-            listMaterialTest = bdd.GetMaterials();
+            listMaterialTest = bdd.GetMaterials(false);
           
             materialTest = listMaterialTest[3];
             

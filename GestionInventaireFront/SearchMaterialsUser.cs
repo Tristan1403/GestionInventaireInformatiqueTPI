@@ -13,6 +13,7 @@ namespace GestionInventaireFront
 {
     public partial class frmSearchMaterialsUser : Form
     {
+        material materialSend = new material();
         public frmSearchMaterialsUser()
         {
             InitializeComponent();
@@ -20,7 +21,12 @@ namespace GestionInventaireFront
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmListMaterialsUser listMaterialsUser = new FrmListMaterialsUser();
+
+            if(txtName.Text != "" || txtDescription.Text != "" || txtQuantity.Text != "")
+            { 
+
+            }
+            FrmListMaterialsUser listMaterialsUser = new FrmListMaterialsUser(materialSend);
             this.Hide();
             listMaterialsUser.ShowDialog();
             this.Close();
@@ -47,5 +53,7 @@ namespace GestionInventaireFront
             listName = "storageplaces";
             cbxStoragePlace.Items.AddRange(bdd.GetList(listName).ToArray());
         }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionInventaireClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace GestionInventaireFront
 {
     public partial class FrmListMaterialsUser : Form
     {
-        public FrmListMaterialsUser()
+        public FrmListMaterialsUser(material material)
         {
             InitializeComponent();
         }
@@ -23,6 +24,19 @@ namespace GestionInventaireFront
             this.Hide();
             home.ShowDialog();
             this.Close();
+        }
+
+        private void FrmListMaterialsUser_Load(object sender, EventArgs e)
+        {
+            ConnectionDB bdd = new ConnectionDB();
+            dataGridView1.DataSource = bdd.GetMaterials(true);
+            purchaseDateDataGridViewTextBoxColumn.Visible = false;
+            renewDateDataGridViewTextBoxColumn.Visible = false;
+            brandsDataGridViewTextBoxColumn.Visible = false;
+            modulesDataGridViewTextBoxColumn.Visible = false;
+            stockagePlacesDataGridViewTextBoxColumn.Visible = false;
+            archivedDataGridViewCheckBoxColumn.Visible = false;
+            typesDataGridViewTextBoxColumn.Visible = false;
         }
     }
 }

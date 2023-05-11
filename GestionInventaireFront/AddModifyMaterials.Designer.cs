@@ -78,7 +78,7 @@
             this.lblPurchaseDate.Name = "lblPurchaseDate";
             this.lblPurchaseDate.Size = new System.Drawing.Size(72, 15);
             this.lblPurchaseDate.TabIndex = 2;
-            this.lblPurchaseDate.Text = "date d\'ahcat";
+            this.lblPurchaseDate.Text = "date d\'achat";
             // 
             // lblBrand
             // 
