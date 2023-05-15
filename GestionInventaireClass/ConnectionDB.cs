@@ -432,6 +432,7 @@ namespace GestionInventaireClass
                 //Close the connection
                 connection.Close();
                 //bdd.InsertMessage(message, id);
+                bdd.InsertMessage(message, id);
 
             }
             catch (MySqlException ex)
@@ -492,6 +493,57 @@ namespace GestionInventaireClass
                     rdr.Close();
                 }
             }
+        }
+
+        /// <summary>
+        /// This method is aimed to retuen a modification message
+        /// </summary>
+        public List<MessageDB> GetMessages(string name)
+        {
+            MySqlDataReader rdr = null;
+            List<MessageDB> listMessageReturn = new List<MessageDB>();
+            connection.Open();
+
+            try
+            {
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+                cmd.CommandText = "SELECT `modification`, `date`, `name` FROM modifications LEFT JOIN materials ON modifications.material_id = materials.id WHERE `name` = @name;";
+                cmd.Parameters.AddWithValue("@name", name);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    MessageDB message = new MessageDB();
+                    message.MessageString = rdr.GetString(0);
+                    message.MessageDate = rdr.GetDateTime(1);
+
+                    listMessageReturn.Add(message);
+                }
+                
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+            return listMessageReturn;
         }
     }
 }

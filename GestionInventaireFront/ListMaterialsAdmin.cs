@@ -64,6 +64,5 @@ namespace GestionInventaireFront
             listAddModify.ShowDialog();
             this.Close();
         }
-
     }
 }

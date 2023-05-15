@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cmdSearchMaterial = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,7 @@
             this.typesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archivedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,11 +56,11 @@
             this.cmdSearchMaterial.UseVisualStyleBackColor = true;
             this.cmdSearchMaterial.Click += new System.EventHandler(this.cmdHomeListAddDelete_Click);
             // 
-            // dataGridView1
+            // dataGridView2
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.purchaseDateDataGridViewTextBoxColumn,
@@ -71,12 +71,13 @@
             this.quantityDataGridViewTextBoxColumn,
             this.typesDataGridViewTextBoxColumn,
             this.archivedDataGridViewCheckBoxColumn});
-            this.dataGridView1.DataSource = this.materialBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(653, 372);
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridView2.DataSource = this.materialBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 25;
+            this.dataGridView2.Size = new System.Drawing.Size(653, 372);
+            this.dataGridView2.TabIndex = 5;
+            this.dataGridView2.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseDoubleClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -147,12 +148,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 485);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.cmdSearchMaterial);
             this.Name = "FrmListMaterialsUser";
             this.Text = "ListeMaterialsUser";
             this.Load += new System.EventHandler(this.FrmListMaterialsUser_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -161,7 +162,7 @@
         #endregion
 
         private Button cmdSearchMaterial;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridView2;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn purchaseDateDataGridViewTextBoxColumn;
