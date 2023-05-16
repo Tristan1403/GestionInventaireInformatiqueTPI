@@ -168,10 +168,10 @@
             this.lblLisUser.AutoSize = true;
             this.lblLisUser.Location = new System.Drawing.Point(325, 21);
             this.lblLisUser.Name = "lblLisUser";
-            this.lblLisUser.Size = new System.Drawing.Size(439, 15);
+            this.lblLisUser.Size = new System.Drawing.Size(435, 15);
             this.lblLisUser.TabIndex = 7;
-            this.lblLisUser.Text = "Bonjour, Veuillez cliquer à gauche de la colone pour afficher les détails du maté" +
-    "riel";
+            this.lblLisUser.Text = "Bonjour, Veuillez cliquer à gauche de la colone pour  modifier/archiver le matéri" +
+    "el";
             // 
             // FrmListMaterialsAdmin
             // 

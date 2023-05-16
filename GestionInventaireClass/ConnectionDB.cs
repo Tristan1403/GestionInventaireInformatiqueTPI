@@ -50,15 +50,15 @@ namespace GestionInventaireClass
             {
                 connection.Open();
 
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
+                // Request SQL
                 cmd.CommandText = "SELECT pseudo, password FROM administrators WHERE pseudo = @Pseudo && password = @password;";
                 cmd.Parameters.AddWithValue("@pseudo", admin.Pseudo);
                 cmd.Parameters.AddWithValue("@password", admin.Password);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
                 //return true if pseudo and password are right
@@ -85,7 +85,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -99,7 +99,6 @@ namespace GestionInventaireClass
         /// <summary>
         /// This method is aimed to return the list found in db
         /// </summary>
-
         public List<string> GetList(string listName)
         {
             connection.Open();
@@ -110,14 +109,13 @@ namespace GestionInventaireClass
             try
             {
 
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
+                // Request SQL
                 cmd.CommandText = "SELECT name FROM " + listName + ";";
 
-
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -125,7 +123,7 @@ namespace GestionInventaireClass
                     list.Add(new string(rdr["name"].ToString()));
                 }
 
-                //Close the connection
+                //Close the datareader
                 connection.Close();
 
             }
@@ -155,20 +153,17 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
-
+                // Request SQL
                 cmd.CommandText = "INSERT INTO " + listName + " (name) VALUES(@WordToAdd);";
                 cmd.Parameters.AddWithValue("@WordToAdd", WordToAdd);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
-
-                //Close the connection
+                //Close the datareader
                 connection.Close();
 
             }
@@ -198,18 +193,15 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
-
+                // Request SQL
                 cmd.CommandText = "DELETE FROM " + listName + " WHERE name=@WordToDelete;";
                 cmd.Parameters.AddWithValue("@WordToDelete", WordToDelete);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
-
 
                 //Close the connection
                 connection.Close();
@@ -222,7 +214,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -242,15 +234,14 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
+                // Request SQL
                 cmd.CommandText = "SELECT id FROM " + ListName + " WHERE " + ListName + ".name = @name;";
                 cmd.Parameters.AddWithValue("@name", name);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -268,7 +259,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -293,11 +284,10 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
+                // Request SQL
                 //insert the material in the DB
                 cmd.CommandText = "INSERT INTO materials (`name`, `description`, `date of purchase`, `brand_id`, `module_id`, `storage place_id`, `renewal DATE`, quantity, `type_id`, archived) VALUES (@name, @description, @dateOfPurchase," + brands + ", " + modules + ", " + stockagePlaces + ", @renewalDate, @quantity, " + types + ", " + 0 + ");";
                 cmd.Parameters.AddWithValue("@name", AddMaterial.Name);
@@ -306,7 +296,7 @@ namespace GestionInventaireClass
                 cmd.Parameters.AddWithValue("@renewalDate", AddMaterial.RenewDate);
                 cmd.Parameters.AddWithValue("@quantity", AddMaterial.Quantity);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
 
@@ -320,7 +310,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -340,13 +330,12 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
                 if (trueOrFalse == false)
                 {
-                    // Requête SQL
+                    // Request SQL
                     cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id;";
                 }
                 else
@@ -355,7 +344,7 @@ namespace GestionInventaireClass
                     cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id WHERE `archived` = 0;";
                 }
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
                 //create a material with the DB data and add him on a list
@@ -387,7 +376,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -412,10 +401,10 @@ namespace GestionInventaireClass
 
             try
             {
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
+                // Request SQL
                 //insert the material in the DB
                 cmd.CommandText = "UPDATE materials SET `name` = @name, `description`= @description, `date of purchase` = @dateOfPurchase, `brand_id` = " + brands + ", `module_id` = " + modules + ", `storage place_id` = " + stockagePlaces + ", `renewal DATE` = @renewalDate, quantity = @quantity, `type_id` = " + types + ", archived = @archived   WHERE materials.id = @id;";
                 cmd.Parameters.AddWithValue("@name", AddMaterial.Name);
@@ -426,7 +415,7 @@ namespace GestionInventaireClass
                 cmd.Parameters.AddWithValue("@archived", AddMaterial.Archived);
                 cmd.Parameters.AddWithValue("@id", id);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
                 //Close the connection
@@ -442,7 +431,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -461,18 +450,16 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
-
+                // Request SQL
                 cmd.CommandText = "INSERT INTO modifications (`modification`, `date`,`material_id`) VALUES(@message, @date, @id);";
                 cmd.Parameters.AddWithValue("@message", message);
                 cmd.Parameters.AddWithValue("@date", DateTime.Now);
                 cmd.Parameters.AddWithValue("@id", idMaterial);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
 
@@ -487,7 +474,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -496,7 +483,7 @@ namespace GestionInventaireClass
         }
 
         /// <summary>
-        /// This method is aimed to retuen a list of message
+        /// This method is aimed to return a list of message
         /// </summary>
         public List<MessageDB> GetMessages(string name)
         {
@@ -506,14 +493,14 @@ namespace GestionInventaireClass
 
             try
             {
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
+                // Request SQL
                 cmd.CommandText = "SELECT `modification`, `date`, `name` FROM modifications LEFT JOIN materials ON modifications.material_id = materials.id WHERE `name` = @name;";
                 cmd.Parameters.AddWithValue("@name", name);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
@@ -537,7 +524,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -558,16 +545,14 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
-
+                // Request SQL
                 cmd.CommandText = "DELETE FROM materials WHERE `name` = @name;";
                 cmd.Parameters.AddWithValue("@name", name);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
 
@@ -581,7 +566,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();
@@ -599,16 +584,14 @@ namespace GestionInventaireClass
 
             try
             {
-
-                // Création d'une commande SQL en fonction de l'objet connection
+                //Create a SQL command with object connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                // Requête SQL
-
+                // Request SQL
                 cmd.CommandText = "DELETE FROM modifications WHERE `modification` = @message;";
                 cmd.Parameters.AddWithValue("@message", message);
 
-                // Exécution de la commande SQL
+                // Execute SQL command
                 rdr = cmd.ExecuteReader();
 
 
@@ -622,7 +605,7 @@ namespace GestionInventaireClass
             }
             finally
             {
-                //Fermeture du datareader
+                //Close the datareader
                 if (rdr != null)
                 {
                     rdr.Close();

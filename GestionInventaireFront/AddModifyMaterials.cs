@@ -45,7 +45,7 @@ namespace GestionInventaireFront
         private void cmdAddModify_Click(object sender, EventArgs e)
         {
             //check if everything is filled
-            if(txtName.Text != "" || txtDescription.Text != "" || cbxBrand.SelectedItem != null || cbxModule.SelectedItem != null || cbxStockagePlace.SelectedItem != null || txtQuantity.Text != "" || cbxType.SelectedItem != null)
+            if(txtName.Text != "" && txtDescription.Text != "" && cbxBrand.SelectedItem != null && cbxModule.SelectedItem != null && cbxStockagePlace.SelectedItem != null && txtQuantity.Text != "" && cbxType.SelectedItem != null)
             {
                 if(dateTPPurchaseDate.Value < dateTPRewnewalDate.Value) 
                 {
@@ -106,9 +106,24 @@ namespace GestionInventaireFront
                             this.Close();
                         }
                     }
+                    catch (OverflowException ex)
+                    {
+                        //error int is too big for a int32
+                        MessageBox.Show("La quantité est bien trop grande!!!");
+                    }
+                    catch (FormatException ex)
+                    {
+                        //error string is input it should be an int
+                        MessageBox.Show("La quantité doit être un chiffre!");
+                    }
+                    catch (System.NullReferenceException ex)
+                    {
+                        //if a characteristic is empty it will throw this error 
+                        MessageBox.Show("Veuillez sélectionner quelque chose dans les combobox!");
+                    }
                     catch (Exception ex)
                     {
-                        //show a the error thorowed in UpdateMaterial
+                        //catch all other expeption
                         MessageBox.Show(ex.Message);
                     }
                 }

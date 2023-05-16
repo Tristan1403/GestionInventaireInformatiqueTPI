@@ -109,6 +109,7 @@ namespace GestionInventaireTests
             ConnectionDB bdd = new ConnectionDB();
             List<material> listMaterialTest = new List<material>();
             material materialTest = new material();
+            //set base data in the material
             materialExpected.Name = "PCTEST";
             materialExpected.Description = "PC de test";
             materialExpected.PurchaseDate = DateTime.Now.Date;
@@ -139,6 +140,7 @@ namespace GestionInventaireTests
             ConnectionDB bdd = new ConnectionDB();
             List<material> listMaterialTest = new List<material>();
             material materialTest = new material();
+            //set base data in the material
             materialExpected.Name = "PCTEST";
             materialExpected.Description = "PC de test";
             materialExpected.PurchaseDate = DateTime.Now.Date;
@@ -174,12 +176,14 @@ namespace GestionInventaireTests
             ConnectionDB bdd = new ConnectionDB();
             List<MessageDB> ListMessage = new List<MessageDB>();
             MessageDB messageExpected = new MessageDB();
+            //set base data in the message
             messageExpected.MessageDate = DateTime.Now;
             messageExpected.MessageString = "messgae Test2 Update";
 
             //create a material to be able to crate a messgae
             List<material> listMaterialTest = new List<material>();
             material materialTest = new material();
+            //set base data in the material
             materialExpected.Name = "PCTEST";
             materialExpected.Description = "PC de test";
             materialExpected.PurchaseDate = DateTime.Now.Date;
@@ -194,10 +198,13 @@ namespace GestionInventaireTests
             bdd.InsertMaterial(materialExpected);
             int id = bdd.GetId(materialExpected.Name, "materials");
             //Act
+            //add a material to bind it on the message
             bdd.InsertMessage("messgae Test2 Update", id);
+            //get the list of message and get the last one created
             ListMessage = bdd.GetMessages("PCTEST");
             MessageDB messageObtened = new MessageDB();
             messageObtened = ListMessage.Last();
+            //delete test material/message to set the DB clean
             bdd.DeleteMessage("messgae Test2 Update");
             bdd.DeleteObject("PCTEST");
             //Assert

@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using static Google.Protobuf.Reflection.FieldOptions.Types;
 using System.Xml.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.CodeDom;
 
 namespace GestionInventaireFront
 {
@@ -71,12 +73,31 @@ namespace GestionInventaireFront
             //set all rows to invisible
             dataGridView2.CurrentCell = null;
             List<string> Criteria = new List<string>();
+            material Material = new material();
             int modifications = 0;
             foreach(DataGridViewRow row in dataGridView2.Rows)
             {
                 dataGridView2.CurrentCell = null;
                 row.Visible = false;
             }
+
+
+            //code expected to work but missing smt
+            //foreach (DataGridViewRow element in dataGridView2.Rows)
+            //{
+            //  for (int i = 0; i < element.Cells.Count; i++)
+            //    {
+            //        foreach (PropertyInfo prop in MaterialCheck.GetType().GetProperties())
+            //        {
+            //           if (element.Cells[i].Value.ToString() == MaterialCheck + "." + prop.Name.ToString())
+            //            {
+            //                Criteria.Add(element.Cells[i].Value.ToString());
+            //                element.Visible = true;
+            //            }
+            //        }
+            //    }
+            // }
+            
 
             //if this is a criteria then check if there is smt similar in the dataBase and show it
             if (MaterialCheck.Name != null)
@@ -211,9 +232,11 @@ namespace GestionInventaireFront
                     dataGridView2.CurrentCell = null;
                     foreach (DataGridViewRow row in dataGridView2.Rows)
                     {
+                        //set all row to not visible
                         dataGridView2.CurrentCell = null;
                         row.Visible = false;
                     }
+
                     foreach (DataGridViewRow element in dataGridView2.Rows)
                     {
                         modifications = 0;

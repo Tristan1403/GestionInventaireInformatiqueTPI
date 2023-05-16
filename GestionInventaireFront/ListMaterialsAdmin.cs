@@ -29,6 +29,7 @@ namespace GestionInventaireFront
 
         private void cmdHomeListAddDelete_Click(object sender, EventArgs e)
         {
+            //go to HomeAdmin
             FrmHomeAdmin homeAdmin = new FrmHomeAdmin();
             this.Hide();
             homeAdmin.ShowDialog();
@@ -38,6 +39,7 @@ namespace GestionInventaireFront
 
         private void FrmListMaterialsAdmin_Load(object sender, EventArgs e)
         {
+            //get the list a material in the database
             ConnectionDB bdd = new ConnectionDB();
             dataGridView1.DataSource = bdd.GetMaterials(false);
         }
@@ -45,6 +47,7 @@ namespace GestionInventaireFront
 
         private void dataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //get the material selected by his row
             int row = e.RowIndex;
             material materialModify = new material();
             materialModify.Name = Convert.ToString(dataGridView1[0, row].Value);
@@ -58,7 +61,7 @@ namespace GestionInventaireFront
             materialModify.Types = Convert.ToString(dataGridView1[8, row].Value);
             materialModify.Archived = Convert.ToBoolean(dataGridView1[9, row].Value);
 
-
+            //go to listMaterialsAdmin with the material selected
             frmAddModifyMaterials listAddModify = new frmAddModifyMaterials(materialModify, true);
             this.Hide();
             listAddModify.ShowDialog();
