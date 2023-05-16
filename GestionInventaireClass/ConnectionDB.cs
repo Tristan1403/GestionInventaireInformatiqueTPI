@@ -344,7 +344,7 @@ namespace GestionInventaireClass
                 // Création d'une commande SQL en fonction de l'objet connection
                 MySqlCommand cmd = this.connection.CreateCommand();
 
-                if(trueOrFalse == false)
+                if (trueOrFalse == false)
                 {
                     // Requête SQL
                     cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id;";
@@ -354,7 +354,7 @@ namespace GestionInventaireClass
                     // Requête SQL
                     cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id WHERE `archived` = 0;";
                 }
-                     
+
                 // Exécution de la commande SQL
                 rdr = cmd.ExecuteReader();
 
@@ -496,7 +496,7 @@ namespace GestionInventaireClass
         }
 
         /// <summary>
-        /// This method is aimed to retuen a modification message
+        /// This method is aimed to retuen a list of message
         /// </summary>
         public List<MessageDB> GetMessages(string name)
         {
@@ -524,7 +524,7 @@ namespace GestionInventaireClass
 
                     listMessageReturn.Add(message);
                 }
-                
+
 
 
                 //Close the connection
@@ -544,6 +544,90 @@ namespace GestionInventaireClass
                 }
             }
             return listMessageReturn;
+        }
+
+
+
+        /// <summary>
+        /// This method is aimed to delete a specific object in the DB used in the test
+        /// </summary>
+        public void DeleteObject(string name)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+
+                cmd.CommandText = "DELETE FROM materials WHERE `name` = @name;";
+                cmd.Parameters.AddWithValue("@name", name);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// This method is aimed to delete a specific message in the DB used in the test
+        /// </summary>
+        public void DeleteMessage(string message)
+        {
+            MySqlDataReader rdr = null;
+            connection.Open();
+
+            try
+            {
+
+                // Création d'une commande SQL en fonction de l'objet connection
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                // Requête SQL
+
+                cmd.CommandText = "DELETE FROM modifications WHERE `modification` = @message;";
+                cmd.Parameters.AddWithValue("@message", message);
+
+                // Exécution de la commande SQL
+                rdr = cmd.ExecuteReader();
+
+
+                //Close the connection
+                connection.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                //Fermeture du datareader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+            }
         }
     }
 }

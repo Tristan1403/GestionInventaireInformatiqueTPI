@@ -2,11 +2,14 @@ using GestionInventaireClass;
 using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Tls.Crypto.Impl.BC;
+using System.Xml.Linq;
 
 namespace GestionInventaireTests
 {
     public class Tests
     {
+        public material materialExpected = new material();
+
         [SetUp]
         public void Setup()
         {
@@ -106,8 +109,7 @@ namespace GestionInventaireTests
             ConnectionDB bdd = new ConnectionDB();
             List<material> listMaterialTest = new List<material>();
             material materialTest = new material();
-            material materialExpected = new material();
-            materialExpected.Name = "PC10";
+            materialExpected.Name = "PCTEST";
             materialExpected.Description = "PC de test";
             materialExpected.PurchaseDate = DateTime.Now.Date;
             materialExpected.Brands = "HP";
@@ -121,11 +123,85 @@ namespace GestionInventaireTests
             //Act
             bdd.InsertMaterial(materialExpected);
             listMaterialTest = bdd.GetMaterials(false);
-          
-            materialTest = listMaterialTest[3];
+            //get the last created material
+            materialTest = listMaterialTest.Last();
+            //delete the material to let the DB clean
+            bdd.DeleteObject("PCTEST");
             
             //Assert
-            Assert.AreEqual(materialExpected, materialTest);
+            Assert.AreEqual(materialExpected.Name, materialTest.Name);
+        }
+
+        [Test]
+        public void CheckMaterialUpdate()
+        {
+            //Arrange
+            ConnectionDB bdd = new ConnectionDB();
+            List<material> listMaterialTest = new List<material>();
+            material materialTest = new material();
+            materialExpected.Name = "PCTEST";
+            materialExpected.Description = "PC de test";
+            materialExpected.PurchaseDate = DateTime.Now.Date;
+            materialExpected.Brands = "HP";
+            materialExpected.Modules = "ICT-160";
+            materialExpected.StockagePlaces = "SC-C236";
+            materialExpected.RenewDate = DateTime.Now.Date;
+            materialExpected.Quantity = 1;
+            materialExpected.Types = "pc";
+            materialExpected.Archived = false;
+
+            //Act
+            bdd.InsertMaterial(materialExpected);
+            int id = bdd.GetId(materialExpected.Name, "materials");
+            //Update 
+            materialExpected.Name = "PCTEST2";
+            bdd.UpdateMaterial(materialExpected, id, "messgae Test Update");
+            listMaterialTest = bdd.GetMaterials(false);
+            //get the last created material
+            materialTest = listMaterialTest.Last();
+            //delete the material to let the DB clean
+            bdd.DeleteMessage("messgae Test Update");
+            bdd.DeleteObject("PCTEST2");
+
+            //Assert
+            Assert.AreEqual(materialExpected.Name, materialTest.Name);
+        }
+
+        [Test]
+        public void InsertMessageAndGetMessage()
+        {
+            //Arrange
+            ConnectionDB bdd = new ConnectionDB();
+            List<MessageDB> ListMessage = new List<MessageDB>();
+            MessageDB messageExpected = new MessageDB();
+            messageExpected.MessageDate = DateTime.Now;
+            messageExpected.MessageString = "messgae Test2 Update";
+
+            //create a material to be able to crate a messgae
+            List<material> listMaterialTest = new List<material>();
+            material materialTest = new material();
+            materialExpected.Name = "PCTEST";
+            materialExpected.Description = "PC de test";
+            materialExpected.PurchaseDate = DateTime.Now.Date;
+            materialExpected.Brands = "HP";
+            materialExpected.Modules = "ICT-160";
+            materialExpected.StockagePlaces = "SC-C236";
+            materialExpected.RenewDate = DateTime.Now.Date;
+            materialExpected.Quantity = 1;
+            materialExpected.Types = "pc";
+            materialExpected.Archived = false;
+
+            bdd.InsertMaterial(materialExpected);
+            int id = bdd.GetId(materialExpected.Name, "materials");
+            //Act
+            bdd.InsertMessage("messgae Test2 Update", id);
+            ListMessage = bdd.GetMessages("PCTEST");
+            MessageDB messageObtened = new MessageDB();
+            messageObtened = ListMessage.Last();
+            bdd.DeleteMessage("messgae Test2 Update");
+            bdd.DeleteObject("PCTEST");
+            //Assert
+            Assert.AreEqual(messageExpected.MessageString, messageObtened.MessageString);
         }
     }
 }

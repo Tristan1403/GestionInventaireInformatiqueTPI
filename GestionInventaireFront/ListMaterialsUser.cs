@@ -256,5 +256,32 @@ namespace GestionInventaireFront
             }
            
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            material materialShow = new material();
+            materialShow.Name = Convert.ToString(dataGridView2[0, index].Value);
+            materialShow.Description = Convert.ToString(dataGridView2[1, index].Value);
+            materialShow.PurchaseDate = Convert.ToDateTime(dataGridView2[2, index].Value);
+            materialShow.Brands = Convert.ToString(dataGridView2[3, index].Value);
+            materialShow.Modules = Convert.ToString(dataGridView2[4, index].Value);
+            materialShow.StockagePlaces = Convert.ToString(dataGridView2[5, index].Value);
+            materialShow.RenewDate = Convert.ToDateTime(dataGridView2[6, index].Value);
+            materialShow.Quantity = Convert.ToInt32(dataGridView2[7, index].Value);
+            materialShow.Types = Convert.ToString(dataGridView2[8, index].Value);
+            materialShow.Archived = Convert.ToBoolean(dataGridView2[9, index].Value);
+
+
+            frmShowDetailsUser showDetails = new frmShowDetailsUser(materialShow, MaterialCheck);
+            this.Hide();
+            showDetails.ShowDialog();
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

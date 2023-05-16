@@ -43,6 +43,7 @@
             this.archivedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.connectionDBBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblLisUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectionDBBindingSource)).BeginInit();
@@ -50,7 +51,7 @@
             // 
             // cmdHomeListAddDelete
             // 
-            this.cmdHomeListAddDelete.Location = new System.Drawing.Point(930, 510);
+            this.cmdHomeListAddDelete.Location = new System.Drawing.Point(937, 522);
             this.cmdHomeListAddDelete.Name = "cmdHomeListAddDelete";
             this.cmdHomeListAddDelete.Size = new System.Drawing.Size(125, 48);
             this.cmdHomeListAddDelete.TabIndex = 4;
@@ -76,7 +77,7 @@
             this.typesDataGridViewTextBoxColumn,
             this.archivedDataGridViewCheckBoxColumn});
             this.dataGridView1.DataSource = this.materialBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 49);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
@@ -162,11 +163,22 @@
             // 
             this.connectionDBBindingSource.DataSource = typeof(GestionInventaireClass.ConnectionDB);
             // 
+            // lblLisUser
+            // 
+            this.lblLisUser.AutoSize = true;
+            this.lblLisUser.Location = new System.Drawing.Point(325, 21);
+            this.lblLisUser.Name = "lblLisUser";
+            this.lblLisUser.Size = new System.Drawing.Size(439, 15);
+            this.lblLisUser.TabIndex = 7;
+            this.lblLisUser.Text = "Bonjour, Veuillez cliquer à gauche de la colone pour afficher les détails du maté" +
+    "riel";
+            // 
             // FrmListMaterialsAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 570);
+            this.ClientSize = new System.Drawing.Size(1074, 582);
+            this.Controls.Add(this.lblLisUser);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cmdHomeListAddDelete);
             this.Name = "FrmListMaterialsAdmin";
@@ -176,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.connectionDBBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -195,5 +208,6 @@
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn typesDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn archivedDataGridViewCheckBoxColumn;
+        private Label lblLisUser;
     }
 }

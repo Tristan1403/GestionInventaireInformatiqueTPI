@@ -43,6 +43,7 @@
             this.lblTypes = new System.Windows.Forms.Label();
             this.cmdDelete = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
+            this.lblModifyList = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblBrands
@@ -176,11 +177,22 @@
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
+            // lblModifyList
+            // 
+            this.lblModifyList.AutoSize = true;
+            this.lblModifyList.Location = new System.Drawing.Point(177, 49);
+            this.lblModifyList.Name = "lblModifyList";
+            this.lblModifyList.Size = new System.Drawing.Size(428, 15);
+            this.lblModifyList.TabIndex = 15;
+            this.lblModifyList.Text = "Veuillez sélectionner la ligne du haut pour effacer et la ligne du bas pour ajout" +
+    "er!";
+            // 
             // FrmListModifyAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblModifyList);
             this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.cmdDelete);
             this.Controls.Add(this.txtTypes);
@@ -221,5 +233,6 @@
         private Label lblTypes;
         private Button cmdDelete;
         private Button cmdAdd;
+        private Label lblModifyList;
     }
 }
