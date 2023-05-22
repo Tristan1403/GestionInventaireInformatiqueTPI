@@ -163,10 +163,10 @@
             this.lblLisUser.AutoSize = true;
             this.lblLisUser.Location = new System.Drawing.Point(79, 19);
             this.lblLisUser.Name = "lblLisUser";
-            this.lblLisUser.Size = new System.Drawing.Size(439, 15);
+            this.lblLisUser.Size = new System.Drawing.Size(479, 15);
             this.lblLisUser.TabIndex = 6;
-            this.lblLisUser.Text = "Bonjour, Veuillez cliquer à gauche de la colone pour afficher les détails du maté" +
-    "riel";
+            this.lblLisUser.Text = "Bonjour, Veuillez double cliquer à gauche de la colone pour afficher les détails " +
+    "du matériel";
             this.lblLisUser.Click += new System.EventHandler(this.label1_Click);
             // 
             // FrmListMaterialsUser
