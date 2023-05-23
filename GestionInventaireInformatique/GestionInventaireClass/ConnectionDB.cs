@@ -340,7 +340,7 @@ namespace GestionInventaireClass
                 }
                 else
                 {
-                    // Requête SQL
+                    // Requête SQL for user so archived stuff is not taken
                     cmd.CommandText = "SELECT materials.name, `description`, `date of purchase`, brands.name, modules.name, storageplaces.name, `renewal DATE`, quantity, types.name, archived FROM materials LEFT JOIN brands ON materials.brand_id = brands.id LEFT JOIN modules ON materials.module_id = modules.id LEFT JOIN storageplaces ON materials.`storage place_id` = storageplaces.id LEFT JOIN types ON materials.type_id = types.id WHERE `archived` = 0;";
                 }
 

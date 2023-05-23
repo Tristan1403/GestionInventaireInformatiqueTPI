@@ -20,7 +20,7 @@ namespace GestionInventaireTests
         {
             //Arrange
             ConnectionDB bdd = new ConnectionDB();
-            Admin tritri = new Admin("tristan", "Pa$$w0rd");
+            Admin tritri = new Admin("admin", "Pa$$w0rd");
             bool resActual = false;
             //Act
             resActual = bdd.CheckAdmin(tritri);
@@ -47,8 +47,8 @@ namespace GestionInventaireTests
             //Arrange
             ConnectionDB bdd = new ConnectionDB();
             List<string> listexpected = new List<string>();
-            listexpected.Add("SC-C111");
-            listexpected.Add("SC-C236");
+            listexpected.Add("sc-c111");
+            listexpected.Add("sc-c236");
             List<string> list = new List<string>();
             //Act
             list = bdd.GetList("storageplaces");
@@ -92,9 +92,9 @@ namespace GestionInventaireTests
         {
             //Arrange
             ConnectionDB bdd = new ConnectionDB();
-            string storageplaces = "SC-C111";
+            string storageplaces = "sc-C111";
             int idStoragePlaces = -1;
-            int idExpected = 2;
+            int idExpected = 1;
 
             //Act
             idStoragePlaces = bdd.GetId(storageplaces, "storageplaces");
@@ -115,7 +115,7 @@ namespace GestionInventaireTests
             materialExpected.PurchaseDate = DateTime.Now.Date;
             materialExpected.Brands = "HP";
             materialExpected.Modules = "ICT-160";
-            materialExpected.StockagePlaces = "SC-C236";
+            materialExpected.StockagePlaces = "sc-C236";
             materialExpected.RenewDate = DateTime.Now.Date;
             materialExpected.Quantity = 1;
             materialExpected.Types = "pc";
