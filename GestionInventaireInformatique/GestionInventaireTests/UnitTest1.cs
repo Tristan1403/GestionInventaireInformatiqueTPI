@@ -41,23 +41,9 @@ namespace GestionInventaireTests
             Assert.IsFalse(resActual);
         }
 
-        [Test]
-        public void GetListTest()
-        {
-            //Arrange
-            ConnectionDB bdd = new ConnectionDB();
-            List<string> listexpected = new List<string>();
-            listexpected.Add("sc-c111");
-            listexpected.Add("sc-c236");
-            List<string> list = new List<string>();
-            //Act
-            list = bdd.GetList("storageplaces");
-            //Assert
-            Assert.AreEqual(listexpected, list);
-        }
 
         [Test]
-        public void InsertDeleteWordTest()
+        public void InsertDeleteWordGetListTest()
         {
             //Add and Delete are together to not leave stuff in the DB
             //Add Section 
