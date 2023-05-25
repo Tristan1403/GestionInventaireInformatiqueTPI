@@ -49,83 +49,91 @@ namespace GestionInventaireFront
             {
                 if(dateTPPurchaseDate.Value < dateTPRewnewalDate.Value) 
                 {
-                    try
+                    if(Int32.Parse(txtQuantity.Text) > 0)
                     {
-                        if (modifyOrAdd == false)
+                        try
                         {
-                            //create a material with the data, the admin inserted
-                            material AddMaterial = new material();
-                            AddMaterial.Name = txtName.Text;
-                            AddMaterial.Description = txtDescription.Text;
-                            AddMaterial.PurchaseDate = dateTPPurchaseDate.Value;
-                            AddMaterial.Brands = cbxBrand.SelectedItem.ToString();
-                            AddMaterial.Modules = cbxModule.SelectedItem.ToString();
-                            AddMaterial.StockagePlaces = cbxStockagePlace.SelectedItem.ToString();
-                            AddMaterial.RenewDate = dateTPRewnewalDate.Value;
-                            AddMaterial.Quantity = Int32.Parse(txtQuantity.Text);
-                            AddMaterial.Types = cbxType.SelectedItem.ToString();
-                            AddMaterial.Archived = false;
+                            if (modifyOrAdd == false)
+                            {
+                                //create a material with the data, the admin inserted
+                                material AddMaterial = new material();
+                                AddMaterial.Name = txtName.Text;
+                                AddMaterial.Description = txtDescription.Text;
+                                AddMaterial.PurchaseDate = dateTPPurchaseDate.Value;
+                                AddMaterial.Brands = cbxBrand.SelectedItem.ToString();
+                                AddMaterial.Modules = cbxModule.SelectedItem.ToString();
+                                AddMaterial.StockagePlaces = cbxStockagePlace.SelectedItem.ToString();
+                                AddMaterial.RenewDate = dateTPRewnewalDate.Value;
+                                AddMaterial.Quantity = Int32.Parse(txtQuantity.Text);
+                                AddMaterial.Types = cbxType.SelectedItem.ToString();
+                                AddMaterial.Archived = false;
 
-                            //insert the material in the DB 
-                            ConnectionDB bdd = new ConnectionDB();
-                            bdd.InsertMaterial(AddMaterial);
+                                //insert the material in the DB 
+                                ConnectionDB bdd = new ConnectionDB();
+                                bdd.InsertMaterial(AddMaterial);
 
-                            //refresh the page
-                            this.Controls.Clear();
-                            this.InitializeComponent();
-                            //tell the admin everything went well
-                            MessageBox.Show("le materiel " + AddMaterial.Name + " a été ajouté à la base de donnée!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //refresh the page
+                                this.Controls.Clear();
+                                this.InitializeComponent();
+                                //tell the admin everything went well
+                                MessageBox.Show("le materiel " + AddMaterial.Name + " a été ajouté à la base de donnée!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                string MessageModify = Interaction.InputBox("Veuillez préciser votre changement", "message de modification", "modification");
+
+                                //update a material with the data, the admin inserted
+                                material updateMaterial = new material();
+                                updateMaterial.Name = txtName.Text;
+                                updateMaterial.Description = txtDescription.Text;
+                                updateMaterial.PurchaseDate = dateTPPurchaseDate.Value;
+                                updateMaterial.Brands = cbxBrand.SelectedItem.ToString();
+                                updateMaterial.Modules = cbxModule.SelectedItem.ToString();
+                                updateMaterial.StockagePlaces = cbxStockagePlace.SelectedItem.ToString();
+                                updateMaterial.RenewDate = dateTPRewnewalDate.Value;
+                                updateMaterial.Quantity = Int32.Parse(txtQuantity.Text);
+                                updateMaterial.Types = cbxType.SelectedItem.ToString();
+                                updateMaterial.Archived = rdbArchived.Checked;
+
+                                //insert the material in the DB 
+                                ConnectionDB bdd = new ConnectionDB();
+                                int id = bdd.GetId(name, "materials");
+                                bdd.UpdateMaterial(updateMaterial, id, MessageModify);
+                                MessageBox.Show("le materiel " + txtName.Text + " a été modifé dans la base de donnée!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                //go back the the matérial list
+                                FrmListMaterialsAdmin ListeMaterialAdmin = new FrmListMaterialsAdmin();
+                                this.Hide();
+                                ListeMaterialAdmin.ShowDialog();
+                                this.Close();
+                            }
                         }
-                        else
+                        catch (OverflowException ex)
                         {
-                            string MessageModify = Interaction.InputBox("Veuillez préciser votre changement", "message de modification", "modification");
-
-                            //update a material with the data, the admin inserted
-                            material updateMaterial = new material();
-                            updateMaterial.Name = txtName.Text;
-                            updateMaterial.Description = txtDescription.Text;
-                            updateMaterial.PurchaseDate = dateTPPurchaseDate.Value;
-                            updateMaterial.Brands = cbxBrand.SelectedItem.ToString();
-                            updateMaterial.Modules = cbxModule.SelectedItem.ToString();
-                            updateMaterial.StockagePlaces = cbxStockagePlace.SelectedItem.ToString();
-                            updateMaterial.RenewDate = dateTPRewnewalDate.Value;
-                            updateMaterial.Quantity = Int32.Parse(txtQuantity.Text);
-                            updateMaterial.Types = cbxType.SelectedItem.ToString();
-                            updateMaterial.Archived = rdbArchived.Checked;
-
-                            //insert the material in the DB 
-                            ConnectionDB bdd = new ConnectionDB();
-                            int id = bdd.GetId(name, "materials");
-                            bdd.UpdateMaterial(updateMaterial, id, MessageModify);
-                            MessageBox.Show("le materiel " + txtName.Text + " a été modifé dans la base de donnée!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            //go back the the matérial list
-                            FrmListMaterialsAdmin ListeMaterialAdmin = new FrmListMaterialsAdmin();
-                            this.Hide();
-                            ListeMaterialAdmin.ShowDialog();
-                            this.Close();
+                            //error int is too big for a int32
+                            MessageBox.Show("La quantité est bien trop grande!!!");
+                        }
+                        catch (FormatException ex)
+                        {
+                            //error string is input it should be an int
+                            MessageBox.Show("La quantité doit être un chiffre!");
+                        }
+                        catch (System.NullReferenceException ex)
+                        {
+                            //if a characteristic is empty it will throw this error 
+                            MessageBox.Show("Veuillez sélectionner quelque chose dans les combobox!");
+                        }
+                        catch (Exception ex)
+                        {
+                            //catch all other expeption
+                            MessageBox.Show(ex.Message);
                         }
                     }
-                    catch (OverflowException ex)
+                    else
                     {
-                        //error int is too big for a int32
-                        MessageBox.Show("La quantité est bien trop grande!!!");
+                        MessageBox.Show("Veuillez mettre une quantité supperieur à 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    catch (FormatException ex)
-                    {
-                        //error string is input it should be an int
-                        MessageBox.Show("La quantité doit être un chiffre!");
-                    }
-                    catch (System.NullReferenceException ex)
-                    {
-                        //if a characteristic is empty it will throw this error 
-                        MessageBox.Show("Veuillez sélectionner quelque chose dans les combobox!");
-                    }
-                    catch (Exception ex)
-                    {
-                        //catch all other expeption
-                        MessageBox.Show(ex.Message);
-                    }
+                    
                 }
                 else
                 {

@@ -24,3 +24,6 @@ INSERT INTO materials (`name`, `description`, `date of purchase`, `brand_id`, `m
 INSERT INTO materials (`name`, `description`, `date of purchase`, `brand_id`, `module_id`, `storage place_id`, `renewal DATE`, quantity, `type_id`, archived) VALUES ('switchs', 'switchs dans la salle c111','2023-05-20','2', '1', '1', '2023-07-30', '12', '5', '0');
 INSERT INTO materials (`name`, `description`, `date of purchase`, `brand_id`, `module_id`, `storage place_id`, `renewal DATE`, quantity, `type_id`, archived) VALUES ('routeurs', 'routeurs dans la salle c111','2023-05-22','4', '3', '2', '2023-06-30', '12', '6', '0');
 INSERT INTO materials (`name`, `description`, `date of purchase`, `brand_id`, `module_id`, `storage place_id`, `renewal DATE`, quantity, `type_id`, archived) VALUES ('écrans', 'écrans dans la salle c236','2023-05-22','5', '4', '1', '2023-06-30', '16', '2', '0');
+INSERT INTO modifications (`modification`,`date`,`material_id`) VALUE ('changement de PC03 à PC02', '2023-05-23', 1);
+INSERT INTO modifications (`modification`,`date`,`material_id`) VALUE ('changement de PC04 à PC02', '2023-05-20', 1);
+INSERT INTO modifications (`modification`,`date`,`material_id`) VALUE ('changement de clavier03 à clavier02', '2023-05-23', 2);
