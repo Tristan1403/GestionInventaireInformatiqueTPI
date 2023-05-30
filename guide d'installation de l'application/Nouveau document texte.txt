@@ -1,0 +1,4 @@
+1.	Pour l’installation de l’application, il faut en premier lieux cloner ou télécharger le contenue dans le GitHub : https://github.com/Tristan1403/GestionInventaireInformatiqueTPI
+2.	Il faut maintenant récupérer le script d’installation de base de données et créer la bdd avec comme admin de la bdd « AdminGestionInventaire » et le mot de passe doit être « Pa$$w0rd ». Puis insérer les données avec le script d’insertion de données.
+3.	Il faut maintenant compiler la solution qui se trouve dans GestionInventaire\GestionInventaireInformatique\GestionInventaire.sln
+4.	Maintenant un .exe est créer dans GestionInventaire\GestionInventaireInformatique\GestionInventaireFront\bin\Debug\net6.0-windows\GestionInventaireFront.exe
